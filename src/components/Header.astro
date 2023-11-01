@@ -1,0 +1,49 @@
+---
+import logoApp from "../assets/bounce-right.svg";
+---
+
+<header
+  class="w-full relative text-[#ffbd33] flex justify-center items-center p-4"
+>
+  <a class="absolute left-10 z-10 flex flex-row items-center" href="/" title="Leonel Web">
+    <img
+      class="w-[3em]"
+      src={logoApp.src}
+      alt="Logotype Web"
+      width={logoApp.width}
+      height={logoApp.height}
+    /> <span class="text-3xl font-bold">LWeb</span>
+  </a>
+  <nav class="border-b z-10 border-b-slate-300 py-2">
+    <ul class="flex flex-row gap-8">
+      <li>
+        <a href="/blog" title="Go to mi blog!">Blog</a>
+      </li>
+      <li>
+        <a href="/projects" title="See my projects!">Projects</a>
+      </li>
+      <li>
+        <a href="/contact" title="Contact me!">Contact</a>
+      </li>
+      <li>
+        <a href="/about" title="About me..">About</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  nav > ul > li > a {
+    font-size: xx-large;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all 0.1s ease-in;
+    display: block;
+  }
+  nav > ul > li > a:hover {
+    text-decoration-color: #ffbd33;
+    transform: scale(1.1);
+    filter: brightness(1.1);
+  }
+</style>
