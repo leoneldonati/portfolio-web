@@ -1,8 +1,14 @@
 export interface Store {
   projects: GitHubProject[];
   projectSelected: GitHubProject;
+  filters: {
+    range: number,
+    lang: string
+  },
   selectProject: (project: GitHubProject) => void;
-  getProjects: (quantity: Number) => Promise<GitHubProject[]>;
+  getProjects: () => Promise<GitHubProject[]>;
+  persistState: () => void;
+  filterProjects: (range: number, lang: string) => void;
 }
 export interface GitHubProject {
   id: number;

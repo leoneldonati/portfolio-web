@@ -1,21 +1,27 @@
 ---
 import { ProjectsList } from "../components/ProjectsList";
 import { ProjectInfo } from "../components/ProjectInfo";
+import Filters from '../components/Filters.tsx'
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Projects">
-  <section class="w-full text-center grid place-items-center">
+  <section class="w-full text-center grid place-items-center" >
     
-    <div class="w-full flex flex-1 flex-row gap-2 justify-around items-start translate-y-[25%]">
-      <div class="border bg-[#ff5733] shadow-md shadow-[#555] p-2 text-slate-200 w-[300px] rounded-lg">
-        <h2 class="mb-4 text-xl underline underline-offset-8">Here are some projects</h2>
+    <div class="w-full flex flex-1 flex-row gap-20 justify-center items-start translate-y-[20%]">
+      <div class="border bg-[#ff5733] shadow-md shadow-[#555] p-2 text-slate-200 w-[400px] rounded-lg">
+        
         <ProjectsList client:load />
       </div>
 
-      <div class="border border-slate-300 shadow-md shadow-slate-100 bg-[#555] p-2 text-slate-200 rounded-lg w-full max-w-[600px] ">
-        <h2 class="text-2xl underline underline-offset-8 mb-2">Project info..</h2>
-        <ProjectInfo client:load />
+      <div class="flex flex-col gap-5">
+        
+        <div class="border border-slate-300 shadow-md shadow-slate-100 bg-[#555] p-2 text-slate-200 rounded-lg max-w-[800px] ">
+          <h2 class="text-2xl underline underline-offset-8 mb-2"><b>Project info..</b></h2>
+          <ProjectInfo client:load  />
+        </div>
+
+        <Filters client:load />
       </div>
     </div>
   </section>

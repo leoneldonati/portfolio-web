@@ -1,4 +1,5 @@
 import { useStore } from "../store.tsx";
+import { setColorByLang } from "../tools/colors.ts";
 
 export function ProjectInfo() {
   const projectSelected = useStore((state) => state.projectSelected);
@@ -26,7 +27,7 @@ export function ProjectInfo() {
   return (
     <article className="flex flex-col w-full gap-3 text-xl">
       <div className="flex flex-row justify-between border-b p-2">
-        <h3>
+        <h3 className="mr-10">
           <strong>
             <span className="underline underline-offset-4">Name</span>
             {": " + name}
@@ -45,7 +46,7 @@ export function ProjectInfo() {
       </div>
 
       <div className="p-2">
-        <p className="text-left mb-2">
+        <p className="text-left mb-2 max-w-sm">
           <strong>Description:</strong> {description}
         </p>
 
@@ -54,7 +55,7 @@ export function ProjectInfo() {
             <li>Stars: {stargazersCount}</li>
             <li>Forks: {forksCount}</li>
 
-            <li>Language: {language ? language : "None"}</li>
+            <li className="bg-[rgba(240,240,240,.4)] text-black p-1 rounded-lg">Language: <span style={{ color: setColorByLang(language)}}>{language ? language : "None"}</span></li>
 
             {/* links */}
             <div className="flex flex-row gap-4 [&>li>a]:border [&>li>a]:border-[#ffbd33] [&>li>a]:block [&>li>a]:bg-[#ffbd33] [&>li>a]:text-black [&>li>a:hover]:scale-95 [&>li>a:active]:scale-100 [&>li>a]:transition [&>li>a]:rounded-xl [&>li>a]:p-2 mt-2 p-2">
