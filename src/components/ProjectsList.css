@@ -1,0 +1,15 @@
+ul {
+
+}
+
+  ::-webkit-scrollbar {
+  background-color: #ff5733;
+  
+  border-radius: 3em;
+
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: slategray;
+  border-radius: 3em;
+} 

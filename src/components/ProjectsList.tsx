@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useStore } from "../store.tsx";
 import type { GitHubProject } from "../interfaces.ts";
+import './ProjectsList.css'
+
 
 export function ProjectsList() {
   const projects: GitHubProject[] = useStore((store) => store.projects);
@@ -14,7 +16,7 @@ export function ProjectsList() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full h-full">
       <span className="text-xl">
         Here are <strong>{projects.length}</strong> projects writed in{" "}
         <b>{filters.lang}</b>
