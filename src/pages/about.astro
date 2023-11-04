@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import foto2 from "../assets/carrousel/foto-2.png";
+import foto4 from "../assets/carrousel/foto-4.png";
+import foto5 from "../assets/carrousel/foto-5.png";
+import Node from '../icons/Node.astro'
+import JS from '../icons/JavaScript.astro'
+import React from '../icons/React.astro'
+import Vite from '../icons/Vite.astro'
+import HTML from '../icons/HTML.astro'
+import Git from '../icons/Git.astro'
+import Tailwind from '../icons/Tailwind.astro'
+import Mongo from '../icons/MongoDB.astro'
+---
+
+<Layout title="About me 😊">
+  <section class="w-full text-center">
+    <h3
+      style="font-size: 2em; padding-top: 1em; color: #ffbd33; filter: contrast(1.9);"
+      class="underline-offset-8 font-bold"
+    >
+      Here I leave some interesting things about me 😊
+    </h3>
+
+    <div class="flex flex-row">
+      <article
+        style="width: 30em;"
+        class="overflow-x-hidden flex flex-row gap-4"
+      >
+        <Image
+          src={foto2}
+          alt="foto leonel 1"
+          style={{ width: "30em", borderRadius: "3em", filter: "grayscale(1)" }}
+        />
+        <Image
+          src={foto4}
+          alt="foto leonel 2"
+          style={{ width: "30em", borderRadius: "3em", filter: "grayscale(1)" }}
+        />
+        <Image
+          src={foto5}
+          alt="foto leonel 3"
+          style={{ width: "30em", borderRadius: "3em", filter: "grayscale(1)" }}
+        />
+      </article>
+
+      <div>
+        <p>
+          I Leonel, a JavaScript FullStack Web Developer from Argentina. <br />
+           I can boost your business with a great presence on the web, thanks to
+          the fact that i develop fast, efficient and SEO friendly applications,
+          and yes, love JavaScript and good HTML never dies
+        </p>
+
+        <div>
+          <span>What tools do i use?</span>
+          <ul>
+            <li>JavaScript <JS /></li>
+            <li>Node JS <Node /></li>
+            <li>React JS <React /> </li>
+            <li>HTML <HTML /></li>
+            <li>Git <Git /></li>
+            <li>Tailwind <Tailwind /></li>
+            <li>Vite <Vite /></li>
+            <li>Mongo DB <Mongo /></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script></script>
