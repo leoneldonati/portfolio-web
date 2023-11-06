@@ -1,3 +1,4 @@
+// store de zustand
 export interface Store {
   projects: GitHubProject[];
   projectSelected: GitHubProject;
@@ -10,6 +11,8 @@ export interface Store {
   persistState: () => void;
   filterProjects: (range: number, lang: string) => void;
 }
+
+// projecto de github
 export interface GitHubProject {
   id: number;
   name: string;
@@ -21,4 +24,10 @@ export interface GitHubProject {
   stargazersCount: number;
   language: string;
   forksCount: number;
+}
+
+// response emailjs
+export interface EmailRes {
+  text: string;
+  status: number;
 }

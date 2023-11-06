@@ -1,0 +1,86 @@
+---
+import { sendEmail } from "../services/emailjs.ts";
+import Mail from "../icons/Mail.astro";
+import MailCheck from "../icons/MailCheck.astro";
+import MessageCard from "./MessageCard.astro";
+
+let sended: boolean = false;
+if (Astro.request.method === "POST") {
+  const data = await Astro.request.formData();
+
+  const email = data.get("email")?.toString();
+  const name = data.get("name")?.toString();
+  const message = data.get("message")?.toString();
+
+  const userData = {
+    email,
+    name,
+    message,
+  };
+
+  const response = await sendEmail(userData);
+
+  sended = response.status === 200 ? true : false;
+}
+---
+
+<form
+  method="POST"
+  class="relative flex flex-col gap-5 w-[300px] border rounded-xl [&>label>input]:w-full [&>label>input]:p-2 [&>label>input]:rounded-md [&>label>input]:bg-slate-300 bg-[#333] p-4"
+  style=`border-color: ${sended && 'rgb(34 197 94)'}`
+>
+  <h3
+    class="flex items-center gap-2 text-xl text-white underline underline-offset-8"
+  >
+    Send me a message {
+      sended ? (
+        <span class="text-green-500">
+          <MailCheck />
+        </span>
+      ) : (
+        <span>
+          <Mail />
+        </span>
+      )
+    }
+  </h3>
+
+  <label for="email">
+    <input
+      id="email"
+      type="email"
+      name="email"
+      required
+      placeholder="example@example.com"
+    />
+  </label>
+  <label for="name">
+    <input
+      id="name"
+      type="text"
+      name="name"
+      required
+      placeholder="Tell me your name.."
+    />
+  </label>
+  <label for="message">
+    <textarea
+      id="message"
+      name="message"
+      rows="10"
+      required
+      placeholder="Tell me how I can help you"
+      class="w-full rounded-md p-2 resize-none bg-slate-300"></textarea>
+  </label>
+
+  <button
+    type="submit"
+    class="border rounded-3xl w-[10em] mx-auto py-2 text-white hover:scale-105 active:scale-100 transition"
+    style="border-color: hsl(11, 100%, 60%); box-shadow: inset 0 0 .5em #ff5733;"
+  >
+    Send message
+  </button>
+
+  <!-- tarjeta de agradecimiento -->
+  {sended && <MessageCard className='absolute border rounded-lg right-[-66%] p-2 w-[190px] text-slate-200 text-xl' styles='border-color: #ffbd33; box-shadow: inset 0 0 .6em #ffbd33;' />}
+</form>

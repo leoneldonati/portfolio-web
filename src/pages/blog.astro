@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="My Blog!">
+  <section id="blog" class="w-full text-center">
+    <h1 class="text-7xl text-red-300 translate-y-[500%]">My Blog coming soon...</h1>
+  </section>
+</Layout>
+
+<style>
+
+#blog {
+  animation: text infinite alternate 2s 2s ease;
+}
+  @keyframes text {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+
+  }
+</style>

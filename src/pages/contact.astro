@@ -1,0 +1,55 @@
+---
+import FormContact from "../components/FormContact.astro";
+import GitHub from "../icons/GitHub.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+import Telegram from "../icons/Telegram.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact with me!">
+  <section class="max-w-[800px] mx-auto mt-20 flex flex-row justify-between items-center gap-10">
+    <!-- sección email -->
+
+    <FormContact transition:animate='fade' />
+
+    <!-- sección redes sociales -->
+    <div>
+      <h2 class="text-white text-3xl mb-5 text-center">Social networks 🌐</h2>
+      
+      <hr class="mb-5">
+
+      <ul class="flex flex-col gap-3 [&>li>a]:rounded-lg [&>li>a]:bg-yellow-300 [&>li>a]:flex [&>li>a]:border [&>li>a]:border-yellow-400 [&>li>a]:text-4xl [&>li>a>svg]:w-[3em] [&>li>a>svg]:h-auto [&>li>a]:items-center [&>li>a]:p-2 [&>li>a]:gap-2 [&>li>a]:font-bold [&>li>a:hover]:scale-95 [&>li>a>svg]:transition [&>li>a:active]:scale-100 [&>li>a]:transition [&>li>a]:shadow-md [&>li>a]:shadow-yellow-600">
+        <li>
+          <a
+            href="https://t.me/leonel_web"
+            title="Contact me in Telegram"
+            rel="noreferrer noopener"
+            target="_blank"
+            class="[&:hover>svg]:rotate-45"
+            ><Telegram /> Telegram</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://linkedin.com/in/leoneldonati"
+            title="See my LinkedIn"
+            rel="noreferrer noopener"
+            target="_blank"
+            class="[&:hover>svg]:text-[#0a66c2]"
+            ><LinkedIn/> LinkedIn</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/leoneldonati"
+            title="Explore my GitHub"
+            rel="noreferrer noopener"
+            target="_blank"
+            class="[&:hover>svg]:text-white"
+            ><GitHub /> GitHub</a
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+</Layout>

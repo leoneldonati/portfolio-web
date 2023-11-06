@@ -5,8 +5,10 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Home">
   <section class="w-full h-full grid place-items-center translate-y-[-13%]">
     <div class="w-full text-center text-slate-300">
-      <h1 class="text-[10em] gradient">Leonel Web</h1>
+      <h1 class="text-[10em] gradient" transition:animate="slide">Leonel Web</h1>
       <h2 class="text-[5em] mt-[-3%]">Web development</h2>
+
+      <p class="text-2xl text-slate-300 mt-9" transition:animate="fade">"It doesn't matter how slow you go as long as you don't stop."</p>
     </div>
   </section>
 </Layout>
