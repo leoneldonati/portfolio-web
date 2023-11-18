@@ -1,16 +1,4 @@
-// store de zustand
-export interface Store {
-  projects: GitHubProject[];
-  projectSelected: GitHubProject;
-  filters: {
-    range: number,
-    lang: string
-  },
-  selectProject: (project: GitHubProject) => void;
-  getProjects: () => Promise<GitHubProject[]>;
-  persistState: () => void;
-  filterProjects: (range: number, lang: string) => void;
-}
+
 
 // projecto de github
 export interface GitHubProject {

@@ -20,7 +20,8 @@ const { title } = Astro.props;
 		<!-- title -->
 		<title>Leonel Web | {title}</title>
 
-		<ViewTransitions />
+		<!-- viewtransitions -->
+		<ViewTransitions fallback='none' />
 	</head>
 	<body class="bg-[#333]">
 		<main class="w-full max-w-7xl h-screen bg-[#666] mx-auto shadow-md shadow-[#777]">
@@ -34,7 +35,7 @@ const { title } = Astro.props;
 <style is:global>
 	@font-face {
 		font-family: 'Heebo';
-		src: url(./Heebo/Heebo-VariableFont_wght.ttf);
+		src: url("/Heebo/Heebo-VariableFont_wght.ttf");
 	}
   body {
 		font-family: 'Heebo', sans-serif;
