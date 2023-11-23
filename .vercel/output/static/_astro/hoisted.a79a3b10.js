@@ -1,0 +1,1 @@
+import"./hoisted.5157f620.js";const l=document.querySelectorAll("img#photoCarrousel");l.forEach(s=>{const t=s;t.style.transition="all .2s ease";let e=0;setInterval(()=>{if(e===200){t.style.opacity="0",e=0,t.style.opacity="1",t.style.translate=`-${e}%`;return}e+=100,t.style.translate=`-${e}%`},4e3)});
