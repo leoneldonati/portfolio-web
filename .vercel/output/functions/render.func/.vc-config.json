@@ -1,6 +1,0 @@
-{
-	"runtime": "nodejs18.x",
-	"handler": "home/leonel/Dev/portfolio-web/dist/entry.mjs",
-	"launcherType": "Nodejs",
-	"supportsResponseStreaming": true
-}
