@@ -8,7 +8,7 @@ import MobileNav from "./MobileNav.astro";
 <header
   class="w-full relative text-[#ffbd33] flex justify-center items-center py-4"
 >
-  <a class="absolute left-10 top-6 z-10 flex flex-row items-center" href="/" title="Leonel Web">
+  <a class="absolute left-2 top-5 md z-10 flex flex-row items-center" href="/" title="Leonel Web">
     <img
       class="w-[3em]"
       src={logoApp.src}
@@ -43,18 +43,4 @@ import MobileNav from "./MobileNav.astro";
   })
 </script>
 
-<style>
-  nav > ul > li > a {
-    font-size: xx-large;
-    font-weight: bold;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: all 0.1s ease-in;
-    display: block;
-  }
-  nav > ul > li > a:hover {
-    text-decoration-color: #ffbd33;
-    transform: scale(1.1);
-    filter: brightness(1.1);
-  }
-</style>
+
