@@ -1,11 +1,14 @@
 ---
 import logoApp from "../assets/bounce-right.svg";
+import Menu from "../icons/Menu.astro";
+import DesktopNav from "./DesktopNav.astro";
+import MobileNav from "./MobileNav.astro";
 ---
 
 <header
-  class="w-full relative text-[#ffbd33] flex justify-center items-center p-4"
+  class="w-full relative text-[#ffbd33] flex justify-center items-center py-4"
 >
-  <a class="absolute left-10 z-10 flex flex-row items-center" href="/" title="Leonel Web">
+  <a class="absolute left-10 top-6 z-10 flex flex-row items-center" href="/" title="Leonel Web">
     <img
       class="w-[3em]"
       src={logoApp.src}
@@ -14,23 +17,31 @@ import logoApp from "../assets/bounce-right.svg";
       height={logoApp.height}
     /> <span class="text-3xl font-bold">LWeb</span>
   </a>
-  <nav class="border-b z-10 border-b-slate-300 py-2">
-    <ul class="flex flex-row gap-8">
-      <li>
-        <a href="/blog" title="Go to mi blog!">Blog</a>
-      </li>
-      <li>
-        <a href="/projects" title="See my projects!">Projects</a>
-      </li>
-      <li>
-        <a href="/contact" title="Contact me!">Contact</a>
-      </li>
-      <li>
-        <a href="/about" title="About me..">About</a>
-      </li>
-    </ul>
-  </nav>
+  
+  <DesktopNav />
+
+  <!-- mobile -->
+  <MobileNav />
+
+  <button class="md:hidden absolute z-10 right-10 top-6">
+
+    <Menu styles="w-10 h-auto" />
+  </button>
 </header>
+
+<script>
+  const $menuIcon = document.getElementById('menu-icon') as HTMLButtonElement;
+  const $mobileNav = document.getElementById('movile-nav') as HTMLElement;
+  let clicked = false;
+  $menuIcon.addEventListener('click', (e) => {
+    clicked = !clicked
+
+
+    $mobileNav.style.transform = `translateX(${clicked ? '-10em' : '0'})`
+
+    $menuIcon.style.rotate = clicked ? '90deg' : '0deg'
+  })
+</script>
 
 <style>
   nav > ul > li > a {
