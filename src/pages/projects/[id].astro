@@ -13,10 +13,10 @@ const createdDate =
 
 ---
 
-<Layout title="Projects">
+<Layout title={repo?.name!}>
   <section
     transition:name=`article ${repo?.id}`
-    class="bg-black flex flex-col p-6 max-w-6xl mx-auto translate-y-[60%] rounded-xl shadow-md shadow-[rgba(33,33,33,.8)]"
+    class="bg-black flex flex-col p-6 max-w-6xl mx-auto md:translate-y-[60%] translate-y-[20%] rounded-xl shadow-md shadow-[rgba(33,33,33,.8)]"
   >
     <div class="grid grid-cols-2 grid-rows-2 place-items-baseline mb-3">
       <h3
@@ -35,7 +35,7 @@ const createdDate =
       </p>
     </div>
     <hr />
-    <ul class="text-white my-4 grid grid-cols-2 text-3xl gap-3">
+    <ul class="text-white my-4 grid md:grid-cols-2 grid-cols-1 text-3xl gap-3">
       <li>- Created at: {createdDate}</li>
       <li>- Stars: {repo?.forksCount}</li>
       <li>
@@ -49,7 +49,7 @@ const createdDate =
     <div
       class="flex items-center justify-around gap-4 mt-5 [&>a]:block [&>a]:text-3xl [&>a]:border [&>a]:p-4 [&>a]:rounded-xl [&>a]:border-slate-300 [&>a:hover]:scale-105 [&>a]:transition text-white"
     >
-      <a class="" href="/projects">Go back</a>
+      <a href="/projects">Go back</a>
       <a
         href={repo?.htmlUrl}
         target="_blank"
@@ -74,6 +74,7 @@ const createdDate =
 </Layout>
 
 <style>
+
   a:hover {
     box-shadow: inset 0 0 .2em #fff;
   }
