@@ -17,19 +17,21 @@ export async function getRepos(): Promise<GitHubProject[] | undefined> {
     const data = await res.json();
 
     const reposFiltered = data
-      .map((repos) => ({
-        id: repos.id,
-        name: repos.name,
-        htmlUrl: repos.html_url,
-        description: repos.description,
-        createdAt: repos.created_at,
-        pushedAt: repos.pushed_at,
-        homepage: repos.home_page,
-        stargazersCount: repos.stargazers_count,
-        language: repos.language,
-        forksCount: repos.forks_count,
+      .map((repo: any) => ({
+        id: repo.id,
+        name: repo.name,
+        htmlUrl: repo.html_url,
+        description: repo.description,
+        createdAt: repo.created_at,
+        pushedAt: repo.pushed_at,
+        homepage: repo.home_page,
+        stargazersCount: repo.stargazers_count,
+        language: repo.language,
+        forksCount: repo.forks_count,
+        avatar: repo.owner.avatar_url
+
       }))
-      .filter((repo) => {
+      .filter((repo: GitHubProject) => {
         const blackList = ["portfolio-web", "reset-css", "leoneldonati"];
 
         return !blackList.includes(repo.name.toLowerCase());

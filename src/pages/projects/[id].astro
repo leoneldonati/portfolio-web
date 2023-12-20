@@ -1,7 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Star from "../../icons/Star.astro";
+import GitFork from "../../icons/GitFork.astro";
+import Browser from "../../icons/Browser.astro";
 import { getOneRepo } from "../../services/github";
 import { setColorByLang } from "../../tools/colors";
+import GitHub from "../../icons/GitHub.astro";
 
 const { id } = Astro.params;
 
@@ -11,71 +15,114 @@ const pushDate =
 const createdDate =
   repo?.createdAt && new Date(repo?.createdAt).toLocaleDateString();
 
+const {
+  avatar,
+  description,
+  forksCount,
+  homepage,
+  htmlUrl,
+  language,
+  name,
+  stargazersCount,
+} = repo!;
 ---
 
-<Layout title={repo?.name!}>
-  <section
-    transition:name=`article ${repo?.id}`
-    class="bg-black flex flex-col p-6 max-w-6xl mx-auto md:translate-y-[60%] translate-y-[20%] rounded-xl shadow-md shadow-[rgba(33,33,33,.8)]"
-  >
-    <div class="grid grid-cols-2 grid-rows-2 place-items-baseline mb-3">
-      <h3
-        transition:name=`title ${repo?.id}`
-        class="font-bold row-span-1 capitalize text-[rgba(255,189,51,.8)] text-3xl"
-      >
-        {repo?.name}
-      </h3>
-      <span class="text-slate-400 row-span-2 text-xl"
-        >Last push: {pushDate}</span
-      >
-
-      <p class="text-white text-xl row-span-2 col-span-2 mt-1 text-ellipsis">
-        <span class="text-slate-400">- Little description:</span>{" "}
-        {repo?.description}
-      </p>
-    </div>
-    <hr />
-    <ul class="text-white my-4 grid md:grid-cols-2 grid-cols-1 text-3xl gap-3">
-      <li>- Created at: {createdDate}</li>
-      <li>- Stars: {repo?.forksCount}</li>
-      <li>
-        - Language: <span style=`color: ${setColorByLang(repo?.language!)}`
-          >{repo?.language === null ? "None" : repo?.language}</span
-        >
-      </li>
-      <li>- Forks: {repo?.forksCount}</li>
-    </ul>
-    <hr />
-    <div
-      class="flex items-center justify-around gap-4 mt-5 [&>a]:block [&>a]:text-3xl [&>a]:border [&>a]:p-4 [&>a]:rounded-xl [&>a]:border-slate-300 [&>a:hover]:scale-105 [&>a]:transition text-white"
+<Layout title={name}>
+  <section class="w-full h-screen grid place-items-center">
+    <article
+      transition:name=`article ${repo?.id}`
+      style=`border: 3px solid ${setColorByLang(language)}; box-shadow: 0 0 .5em ${setColorByLang(language)};`
+      class="rounded-md p-4"
     >
-      <a href="/projects">Go back</a>
-      <a
-        href={repo?.htmlUrl}
-        target="_blank"
-        rel="noreferrer noopener"
-        title={`Go to repository ${repo?.name}`}>Go to {repo?.name}</a
+      <!-- avatar, repo name and created date -->
+      <div
+        class="bg-black/70 flex flex-row items-center gap-3 p-4 rounded-lg"
+        style=`border: 1px solid ${setColorByLang(language)}`
       >
-      {
-        repo?.homepage && (
-          <a
-            href={repo?.homepage}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={`Go to ${repo?.name} deploy`}
-            class="cursor-pointer"
+        <!-- avatar -->
+        <picture>
+          <img
+            src={avatar}
+            alt="GitHub avatar"
+            loading="lazy"
+            class="object-cover aspect-square rounded-full w-20"
+            style=`border: 1px solid ${setColorByLang(language)}`
+          />
+        </picture>
+
+        <!-- name and created date -->
+        <div>
+          <h3
+            class="capitalize text-2xl font-bold italic"
+            style=`color: ${setColorByLang(language)}`
+            transition:name={`title ${id}`}
           >
-          Go to deploy
-          </a>
-        )
-      }
-    </div>
+            {name}
+          </h3>
+
+          <div class="text-slate-400 flex flex-col">
+            <span>
+              Created: {createdDate}
+            </span>
+            <span>
+              Updated: {pushDate}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- repo description -->
+      <div
+        class="text-left text-xl text-white bg-black/70 p-4 rounded-lg max-w-sm"
+        style=`border: 1px solid ${setColorByLang(language)}`
+      >
+        <p class="text-ellipsis">
+          {description ? description : "No description here!"}
+        </p>
+      </div>
+
+      <!-- additional info and links -->
+      <div>
+        <ul>
+          <li><Star /> Stars: {stargazersCount}</li>
+          <li><GitFork /> Forks: {forksCount}</li>
+          <li>
+            <a
+              href={htmlUrl}
+              title={"Go to" + name}
+              rel="noreferrer noopener"
+              target="_blank"
+              class=""
+            >
+              <GitHub /> GitHub
+            </a>
+          </li>
+
+          <li>
+            <a
+              href={homepage}
+              title={"Deploy from: " + name}
+              rel="noreferrer noopener"
+              target="_blank"
+              class=""
+            >
+            <Browser /> Deploy
+            </a>
+          </li>
+        </ul>
+      </div>
+    </article>
   </section>
 </Layout>
 
 <style>
 
-  a:hover {
-    box-shadow: inset 0 0 .2em #fff;
+  ul {
+    display: grid;
+    grid-template-areas: 
+    'info'
+    'links'
+    ;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 200px));
   }
 </style>

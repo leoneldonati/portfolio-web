@@ -12,6 +12,7 @@ export interface GitHubProject {
   stargazersCount: number;
   language: string;
   forksCount: number;
+  avatar: string;
 }
 
 // response emailjs
