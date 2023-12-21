@@ -15,63 +15,85 @@ import Mongo from "../icons/MongoDB.astro";
 ---
 
 <Layout title="About me 😊">
-  <section class="w-full text-center">
+  <section class="w-full pb-14 md:pt-40 p-4 place-items-center grid grid-cols-2 grid-rows-3 md:grid-rows-2">
+    <picture
+      style="width: 20em;"
+      class="overflow-x-hidden overflow-hidden rounded-lg col-span-2 md:col-span-1 row-span-2 flex flex-row"
+      transition:animate="slide"
+    >
+      <Image
+        id="photoCarrousel"
+        src={foto2}
+        alt="foto leonel 1"
+        style={{
+          width: "30em",
+          borderRadius: "3em",
+          filter: "grayscale(1)",
+          objectFit: "cover",
+        }}
+      />
+      <Image
+        id="photoCarrousel"
+        src={foto4}
+        alt="foto leonel 2"
+        style={{
+          width: "30em",
+          borderRadius: "3em",
+          filter: "grayscale(1)",
+          objectFit: "cover",
+        }}
+      />
+      <Image
+        id="photoCarrousel"
+        src={foto5}
+        alt="foto leonel 3"
+        style={{
+          width: "30em",
+          borderRadius: "3em",
+          filter: "grayscale(1)",
+          objectFit: "cover",
+        }}
+      />
+    </picture>
 
-    <div class="flex flex-row p-4 gap-4 w-[95%] mx-auto mt-20">
-      <article
-        style="width: 30em;"
-        class="overflow-x-hidden overflow-hidden rounded-lg flex flex-row"
-        transition:animate="slide"
-      >
-        <Image
-      
-          id="photoCarrousel"
-          src={foto2}
-          alt="foto leonel 1"
-          style={{ width: "30em", borderRadius: "3em", filter: "grayscale(1)", objectFit: 'cover' }}
-        />
-        <Image
-          id="photoCarrousel"
-          src={foto4}
-          alt="foto leonel 2"
-          style={{ width: "30em", borderRadius: "3em", filter: "grayscale(1)",  objectFit: 'cover' }}
-        />
-        <Image
-          id="photoCarrousel"
-          src={foto5}
-          alt="foto leonel 3"
-          style={{ width: "30em", borderRadius: "3em", filter: "grayscale(1)",  objectFit: 'cover' }}
-        />
-      </article>
-
-      <div class="w-full" transition:animate="slide">
-        <p class="text-left text-2xl text-white text-ellipsis mb-4">
-          I Leonel, a <strong>JavaScript FullStack Web Developer</strong> from Argentina. <br />
-          I can <b>boost</b> your business with a great presence on the web, <br> thanks to
-          the fact that develop <b> fast,
-           efficient and SEO friendly applications</b>. <br />
-          And yes, love <span class="text-[#c9982d] bg-yellow-100 rounded p-1 py-0">JavaScript</span> and good <span class="text-[#dc143c] bg-red-200 rounded p-1 py-0">HTML</span> never dies.
-        </p>
-        <div class="w-full border border-slate-400 mb-5"></div>
-        <div class="w-[60%] mx-auto text-start border border-slate-300 rounded-xl p-2">
-          <span class="text-xl text-slate-100 underline underline-offset-4">What tools do i use?</span>
-          <ul class="[&>li]:flex [&>li>svg]:mr-2 [&>li>svg]:w-[3.6em] mt-5  text-white text-xl font-bold [&>li]:items-center [&>li>svg]:h-auto grid grid-cols-2 grid-flow-row place-items-stretch">
-            <li><JS /> JavaScript</li>
-            <li><Node /> Node JS</li>
-            <li><React /> React JS</li>
-            <li><HTML /> HTML</li>
-            <li><Git /> Git</li>
-            <li><Tailwind /> Tailwind</li>
-            <li><Vite /> Vite</li>
-            <li><Mongo /> Mongo DB</li>
-          </ul>
-        </div>
-      </div>
+    <div class="max-w-xl md:max-w-none col-span-2 md:col-span-1 row-span-1">
+      <p class="text-left text-2xl text-white text-ellipsis mb-4">
+        I Leonel, a <strong>JavaScript FullStack Web Developer</strong> from
+        Argentina. <br />
+         I can <b>boost</b> your business with a great presence on the web, <br
+        /> thanks to the fact that develop <b>
+          fast, efficient and SEO friendly applications</b
+        >. <br />
+         And yes, love <span
+          class="text-[#c9982d] bg-yellow-100 rounded p-1 py-0">JavaScript</span
+        > and good <span class="text-[#dc143c] bg-red-200 rounded p-1 py-0"
+          >HTML</span
+        > never dies.
+      </p>
     </div>
 
-    
+    <div class="col-span-2 md:col-span-1 row-span-1">
+      <span class="text-xl text-white underline underline-offset-8 font-bold italic">Some technologies that use</span>
+      <ul class="grid grid-cols-2 gap-2 text-xl mt-5 text-slate-300">
+        <li><HTML /> HTML</li>
+        <li><Node /> Node JS</li>
+        <li><React /> React</li>
+        <li><Vite /> Vite</li>
+        <li><Git /> Git</li>
+        <li><Tailwind /> Tailwind</li>
+        <li><Mongo /> MongoDB</li>
+      </ul>
+    </div>
   </section>
 </Layout>
+
+<style>
+  ul > li {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+  }
+</style>
 
 <script>
   // Carrusel de fotos en la sección "about"
@@ -81,8 +103,6 @@ import Mongo from "../icons/MongoDB.astro";
     const image = img as HTMLElement;
     image.style.transition = "all .2s ease";
     let position: number = 0;
-
-
 
     setInterval(() => {
       if (position === 200) {

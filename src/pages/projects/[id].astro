@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Star from "../../icons/Star.astro";
 import GitFork from "../../icons/GitFork.astro";
 import Browser from "../../icons/Browser.astro";
+import ArrowBack from "../../icons/ArrowBack.astro";
 import { getOneRepo } from "../../services/github";
 import { setColorByLang } from "../../tools/colors";
 import GitHub from "../../icons/GitHub.astro";
@@ -32,11 +33,20 @@ const {
     <article
       transition:name=`article ${repo?.id}`
       style=`border: 3px solid ${setColorByLang(language)}; box-shadow: 0 0 .5em ${setColorByLang(language)};`
-      class="rounded-md p-4"
+      class="rounded-md p-4 grid grid-cols-2 grid-rows-2 gap-4 relative"
     >
+    <!-- go back btn -->
+      <a
+        href="/projects"
+        class="absolute block border -top-14 p-2 rounded-full text-white hover:bg-white hover:text-black active:scale-95 transition"
+      >
+        <ArrowBack />
+      </a>
+
+      
       <!-- avatar, repo name and created date -->
       <div
-        class="bg-black/70 flex flex-row items-center gap-3 p-4 rounded-lg"
+        class="bg-black/70 flex flex-col col-span-2 md:col-span-1 md:flex-row items-center gap-3 p-4 rounded-lg"
         style=`border: 1px solid ${setColorByLang(language)}`
       >
         <!-- avatar -->
@@ -73,7 +83,7 @@ const {
 
       <!-- repo description -->
       <div
-        class="text-left text-xl text-white bg-black/70 p-4 rounded-lg max-w-sm"
+        class="text-left text-xl md:col-span-1 col-span-2 text-white bg-black/70 p-4 rounded-lg max-w-sm"
         style=`border: 1px solid ${setColorByLang(language)}`
       >
         <p class="text-ellipsis">
@@ -82,33 +92,39 @@ const {
       </div>
 
       <!-- additional info and links -->
-      <div>
+      <div class="col-span-2">
         <ul>
           <li><Star /> Stars: {stargazersCount}</li>
           <li><GitFork /> Forks: {forksCount}</li>
-          <li>
-            <a
-              href={htmlUrl}
-              title={"Go to" + name}
-              rel="noreferrer noopener"
-              target="_blank"
-              class=""
-            >
-              <GitHub /> GitHub
-            </a>
-          </li>
 
-          <li>
-            <a
-              href={homepage}
-              title={"Deploy from: " + name}
-              rel="noreferrer noopener"
-              target="_blank"
-              class=""
-            >
-            <Browser /> Deploy
-            </a>
-          </li>
+          <div
+            class="border rounded-lg col-span-2 p-4 flex flex-row bg-white/30 links"
+          >
+            <li>
+              <a
+                href={htmlUrl}
+                title={"Go to" + name}
+                rel="noreferrer noopener"
+                target="_blank"
+                class="link"
+              >
+                <GitHub /> GitHub
+              </a>
+            </li>
+
+            <li>
+              <a
+                href={homepage}
+                title={"Deploy from: " + name}
+                rel="noreferrer noopener"
+                target="_blank"
+                class="link"
+                style=`pointer-events: ${!homepage && 'none'}; transform: scale(${!homepage && .9}); opacity: ${!homepage && .7}`
+              >
+                <Browser /> Deploy
+              </a>
+            </li>
+          </div>
         </ul>
       </div>
     </article>
@@ -116,13 +132,38 @@ const {
 </Layout>
 
 <style>
-
   ul {
     display: grid;
-    grid-template-areas: 
-    'info'
-    'links'
-    ;
+    gap: 2em;
+    grid-template-areas:
+      "info info"
+      "links links";
     grid-template-columns: repeat(auto-fit, minmax(1fr, 200px));
+    place-items: center;
+    color: rgba(240, 240, 240, 0.8);
+  }
+  ul > li {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  ul > li:nth-child(1),
+  ul > li:nth-child(2) {
+    grid-area: "info";
+    font-size: 1.4em;
+  }
+  .link {
+    background-color: #111;
+    border: 1px solid #666;
+    border-radius: 1em;
+    padding: 5px 20px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+  .link:hover {
+    transform: scale(1.05);
   }
 </style>
