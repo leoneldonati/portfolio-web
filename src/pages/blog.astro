@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="My Blog!">
-  <section id="blog" class="w-full h-screen flex items-center justify-center text-center">
+  <section id="blog" class="w-full flex items-center justify-center text-center">
     <h1 class="text-4xl text-red-300">My Blog coming soon...</h1>
   </section>
 </Layout>
@@ -11,6 +11,7 @@ import Layout from "../layouts/Layout.astro";
 <style>
 
 #blog {
+  min-height: calc(100vh - 32px);
   animation: text infinite alternate 2s 2s ease;
 }
   @keyframes text {
