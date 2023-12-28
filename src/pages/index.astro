@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home">
-  <section class="w-full relative">
-    <div class="w-full absolute top-[18em] text-center text-slate-300">
+  <section>
+    <div class="w-full text-center text-slate-300">
       <h1 class="text-7xl gradient" transition:animate="slide">Leonel Web</h1>
       <h2 class="text-3xl">Web development</h2>
 
@@ -21,5 +21,10 @@ import Layout from "../layouts/Layout.astro";
     -webkit-background-clip: text; /* Para navegadores webkit (Safari/Chrome) */
     color: transparent; /* Hacer que el color del texto sea transparente */
     font-weight: bold; 
+  }
+  section {
+    min-height: calc(100vh - 48px);
+    display: grid;
+    place-items: center;
   }
 </style>
