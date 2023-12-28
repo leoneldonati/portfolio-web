@@ -33,8 +33,8 @@ const {
     <article
       transition:name=`article ${repo?.id}`
       style=`border: 3px solid ${setColorByLang(language)}; box-shadow: 0 0 .5em ${setColorByLang(language)};`
-      class="rounded-md p-4 grid grid-cols-2 grid-rows-2 gap-4 relative"
-    >
+      class=" rounded-md p-4 grid grid-cols-2 grid-rows-2 gap-4 relative"
+    > 
     <!-- go back btn -->
       <a
         href="/projects"
@@ -46,7 +46,7 @@ const {
       
       <!-- avatar, repo name and created date -->
       <div
-        class="bg-black/70 flex flex-col col-span-2 md:col-span-1 md:flex-row items-center gap-3 p-4 rounded-lg"
+        class="bg-black/70 flex flex-col col-span-2 md:col-span-1 min-w-[300px] md:min-w-fit md:flex-row items-center gap-3 p-4 rounded-lg"
         style=`border: 1px solid ${setColorByLang(language)}`
       >
         <!-- avatar -->
