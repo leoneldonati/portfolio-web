@@ -1,26 +1,26 @@
-Heebo Variable Font
+Onest Variable Font
 ===================
 
-This download contains Heebo as both a variable font and static fonts.
+This download contains Onest as both a variable font and static fonts.
 
-Heebo is a variable font with this axis:
+Onest is a variable font with this axis:
   wght
 
 This means all the styles are contained in a single file:
-  Heebo-VariableFont_wght.ttf
+  Onest-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Heebo:
-  static/Heebo-Thin.ttf
-  static/Heebo-ExtraLight.ttf
-  static/Heebo-Light.ttf
-  static/Heebo-Regular.ttf
-  static/Heebo-Medium.ttf
-  static/Heebo-SemiBold.ttf
-  static/Heebo-Bold.ttf
-  static/Heebo-ExtraBold.ttf
-  static/Heebo-Black.ttf
+in those cases you can use the static font files for Onest:
+  static/Onest-Thin.ttf
+  static/Onest-ExtraLight.ttf
+  static/Onest-Light.ttf
+  static/Onest-Regular.ttf
+  static/Onest-Medium.ttf
+  static/Onest-SemiBold.ttf
+  static/Onest-Bold.ttf
+  static/Onest-ExtraBold.ttf
+  static/Onest-Black.ttf
 
 Get started
 -----------
