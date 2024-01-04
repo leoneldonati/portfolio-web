@@ -44,8 +44,3 @@ export async function getRepos(): Promise<GitHubProject[] | undefined> {
     console.error(err);
   }
 }
-
-// obtener un solo repositorio
-export function getOneRepo(id: number): GitHubProject | undefined {
-  return repos?.filter((repo) => repo.id === id)[0];
-}

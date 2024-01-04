@@ -1,7 +1,7 @@
 ---
-import RepoCard from "../../components/RepoCard.astro";
-import Layout from "../../layouts/Layout.astro";
-import { getRepos } from "../../services/github";
+import RepoCard from "@components/RepoCard.astro";
+import Layout from "@layouts/Layout.astro";
+import { getRepos } from "../services/github";
 
 const repos = await getRepos()
 
