@@ -1,42 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-
+import Hero from "../components/Hero.astro";
 ---
+
 <Layout>
-	<main>
+  <main>
+    <Header />
 
-		<Header />
-
-		<h1>
-			Hi, I'm Leonel.
-			<span>
-				I build for the <span class="title-word">web</span>.
-			</span>
-		</h1>
-
-	</main>
+    <Hero />
+  </main>
 </Layout>
 
 <style>
-
-	main {
-		width: 100%;
-		max-width: 1270px;
-		margin: 0 auto;
-		padding: 0 1em;
-	}
-
+  main {
+    width: 100%;
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
 </style>
-
-<script>
-	const $wordContainer = document.querySelector('.title-word') as HTMLElement;
-	const words = ['web', 'user'];
-
-	let s = false;
-
-	setInterval(() => {
-		s = !s
-		$wordContainer.innerText = s ? words[0] : words[1];
-	},3000)
-</script>

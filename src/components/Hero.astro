@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import svg from "../../public/svg-img.svg";
+---
+
+<section class="hero">
+  <div>
+    <h1>
+      Hi, I'm Leonel.
+      <span class="title-accent">
+        I build for the <span class="title-word">web.</span>
+      </span>
+    </h1>
+
+    <p>
+      I'm <strong>JavaScript Web Developer</strong>.
+    </p>
+    <p>
+      Currently, I focused on developing <strong
+        >accessible, visually attractive and high-impact</strong
+      > products.
+    </p>
+  </div>
+
+  <picture>
+    <Image src={svg} alt="Svg hero" width={400} height={400} class="hero-svg" />
+  </picture>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-svg {
+    fill: var(--color-2);
+  }
+
+  h1 {
+    font-size: var(--title-size);
+    text-overflow: ellipsis;
+    display: flex;
+    flex-flow: column;
+    margin-top: 15%;
+  }
+
+  p {
+    max-width: 40ch;
+    font-size: var(--paragraph-size);
+    color: var(--color-1);
+    line-height: 1.4;
+  }
+
+  .title-accent {
+    color: var(--color-2);
+  }
+  .title-word {
+    display: block;
+  }
+</style>
+<script>
+  const $wordContainer = document.querySelector(".title-word") as HTMLElement;
+  const words = ["web.", "user."];
+
+  let s = false;
+
+  function changeWords() {
+    s = !s;
+    $wordContainer.innerText = s ? words[1] : words[0];
+  }
+  setInterval(changeWords, 3000);
+</script>
