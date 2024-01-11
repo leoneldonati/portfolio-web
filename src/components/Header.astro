@@ -1,0 +1,42 @@
+---
+import Avatar from "./Avatar.astro";
+import Navigation from "./Navigation.astro";
+---
+
+<header>
+
+  <div class="wrapper">
+    <Avatar />
+  
+    <h2 class="wrapper-h2">
+      Leonel Donati
+    </h2>
+  </div>
+
+  <Navigation />
+
+</header>
+
+<style>
+
+  header {
+    position: sticky;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 5em;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+  .wrapper-h2 {
+    color: var(--text-color-light);
+    font-size: var(--paragraph-size);
+  }
+</style>

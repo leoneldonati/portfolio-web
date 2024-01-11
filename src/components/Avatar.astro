@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import avatar from "../../public/avatar.avif"
+---
+
+<picture>
+  <Image
+    src={avatar}
+    alt={'Leonel Donati avatar'}
+    width={70}
+    height={70}
+    class='avatar'
+    loading='lazy'
+  />
+</picture>
+
+<style>
+  .avatar {
+    border: solid 2px var(--color-2);
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: top;
+    aspect-ratio: 4 4;
+  }
+</style>
