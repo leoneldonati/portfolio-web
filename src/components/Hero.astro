@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import svg from "../../public/svg-img.svg";
+import arrowSvg from "../../public/mouse-filled.svg"
 ---
 
 <section class="hero">
@@ -23,16 +24,49 @@ import svg from "../../public/svg-img.svg";
   </div>
 
   <picture>
-    <Image src={svg} alt="Svg hero" width={400} height={400} class="hero-svg" />
+    <Image src={svg} loading="lazy" alt="Svg hero" width={400} height={400} class="hero-svg" />
+  </picture>
+
+  <picture 
+    class="arrow-svg"
+  >
+    <Image 
+      src={arrowSvg}
+      alt="arrow svg"
+      width={50}
+      height={50}
+      loading="lazy"
+    />
+    <span>Scroll</span>
   </picture>
 </section>
 
 <style>
   section {
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
+    margin-top: 12%;
+  }
+ 
+  .arrow-svg {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    bottom: -60%;
+    left: 50%;
+    right: 50%;
+    animation: mouse 1s 1s infinite alternate cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  @keyframes mouse {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(.4em);
+    }
   }
 
   .hero-svg {
@@ -44,7 +78,6 @@ import svg from "../../public/svg-img.svg";
     text-overflow: ellipsis;
     display: flex;
     flex-flow: column;
-    margin-top: 15%;
   }
 
   p {
@@ -59,6 +92,12 @@ import svg from "../../public/svg-img.svg";
   }
   .title-word {
     display: block;
+  }
+
+  @media (max-width: 904px) {   
+    .hero-svg {
+      display: none;
+    }
   }
 </style>
 <script>
