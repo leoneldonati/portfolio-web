@@ -1,0 +1,55 @@
+---
+import type { RepoInfo } from "../github";
+import { setColorByLang } from "../helpers/colors";
+
+interface Props {
+  repo: RepoInfo;
+}
+const { repo } = Astro.props;
+
+const updatedDate = new Date(repo.updatedAt).toLocaleDateString();
+const pushDate = new Date(repo.pushedAt).toLocaleDateString();
+const createdDate = new Date(repo.createdAt).toLocaleDateString();
+
+const color = setColorByLang(repo.lang);
+---
+
+<article
+
+>
+  <div>
+    <h3
+    >
+      {repo.name}
+    </h3>
+    <span>
+      Created:
+      {createdDate}
+    </span>
+    <span>
+      Last update:
+      {updatedDate}
+    </span>
+    <span>
+      Last push:
+      {pushDate}
+    </span>
+  </div>
+
+  <div>
+    
+  </div>
+</article>
+
+<style>
+  article {
+    display: grid;
+    grid-template-areas: 
+    "text text"
+    "info info"
+    ;
+    border: 1px solid var(--color-2);
+    border-radius: .5em;
+    padding: .7em;
+  }
+</style>

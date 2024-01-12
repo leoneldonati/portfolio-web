@@ -1,12 +1,12 @@
 ---
-  const currentHours = new Date(Date.now()).getHours();
+  const currentHour = new Date(Date.now()).getHours();
 
   let greeting = "";
 
-  if (currentHours < 12) {
+  if (currentHour < 12) {
     greeting = "Good morning!"
   }
-  else if (currentHours < 18) {
+  else if (currentHour < 18) {
     greeting = "Good afternoon!"
   }
   else {
