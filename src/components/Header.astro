@@ -1,5 +1,6 @@
 ---
 import Avatar from "./Avatar.astro";
+import Greetings from "./Greetings.astro";
 import Navigation from "./Navigation.astro";
 ---
 
@@ -13,6 +14,8 @@ import Navigation from "./Navigation.astro";
     </h2>
   </div>
 
+  <Greetings />
+
   <Navigation />
 
 </header>
@@ -20,12 +23,19 @@ import Navigation from "./Navigation.astro";
 <style>
 
   header {
-    position: sticky;
+    position: fixed;
+    background-color: #292929;
+    z-index: 2;
+    width: 100%;
+    max-width: 1270px;
+    top: 0;
+    padding: .5em 0;
+    border-radius: .4em;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 0;
+    transition: all .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   .wrapper {
