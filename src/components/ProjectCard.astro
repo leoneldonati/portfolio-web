@@ -14,42 +14,136 @@ const createdDate = new Date(repo.createdAt).toLocaleDateString();
 const color = setColorByLang(repo.lang);
 ---
 
-<article
+<article>
+  <div class="wrapper">
+    <div class="top-wrapper__left">
+      <h3>
+        {repo.name}
+      </h3>
+      <span>
+        Created:
+        <strong>{createdDate}</strong>
+      </span>
+      <span>
+        Last update:
+        <strong>{updatedDate}</strong>
+      </span>
+      <span>
+        Last push:
+        <strong>{pushDate}</strong>
+      </span>
+    </div>
 
->
-  <div>
-    <h3
-    >
-      {repo.name}
-    </h3>
-    <span>
-      Created:
-      {createdDate}
-    </span>
-    <span>
-      Last update:
-      {updatedDate}
-    </span>
-    <span>
-      Last push:
-      {pushDate}
-    </span>
+    <div class="top-wrapper__right">
+      <div class="links-wrapper">
+        <a
+          href={repo.projectUrl}
+          title={`Link to ${repo.name} in GitHub`}
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          GitHub
+        </a>
+
+        <a
+          href={repo.homepage === null ? '-' : repo.homepage}
+          title={`Link to ${repo.name} in Deploy`}
+          rel="noreferrer noopener"
+          target="_blank"
+          style=`pointer-events: ${repo.homepage !== null ? 'auto': 'none'}; opacity: ${repo.homepage !== null ? 1 : .5};`
+        >
+          Deploy
+        </a>
+      </div>
+
+      <ul>
+        <li>
+          Language:
+          <strong style=`color: ${color};`
+            >{repo.lang === null ? "None" : repo.lang}</strong
+          >
+        </li>
+        <li>
+          {repo.visibility ? "Public" : "Private"}
+        </li>
+      </ul>
+    </div>
   </div>
-
-  <div>
-    
+  <div class="description">
+    <p>
+      {repo.description}
+    </p>
   </div>
 </article>
 
 <style>
   article {
-    display: grid;
-    grid-template-areas: 
-    "text text"
-    "info info"
-    ;
+    display:flex;
+    flex-flow: column;
     border: 1px solid var(--color-2);
+    border-radius: 0.5em;
+    padding: 0.7em;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .description {
+    background-color: #444;
     border-radius: .5em;
-    padding: .7em;
+    padding: 1em;
+    margin-top: 1em;
+    min-height: 3em;
+  }
+
+  h3 {
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    margin-bottom: 0.5em;
+  }
+  ul {
+    list-style: none;
+    margin-top: 0.6em;
+  }
+   p {
+  
+    text-align: left;
+    font-size: 1.3em;
+    margin-top: 0.4em;
+  }
+  .top-wrapper__left {
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    font-size: 1em;
+  }
+  .top-wrapper__right {
+    display: flex;
+    align-items: start;
+    flex-flow: column;
+  }
+  .links-wrapper {
+    display: flex;
+    flex-flow: row;
+
+    gap: 0.3em;
+  }
+  .links-wrapper > a {
+    color: #000;
+    font-weight: bold;
+    background-color: var(--color-2);
+    text-decoration: none;
+    border: 1px solid var(--color-2);
+    padding: 0.5em 1em;
+    transition: all 0.2s ease;
+  }
+  .links-wrapper > a:hover {
+    transform: scale(0.96);
+    border-radius: 0.3em;
+  }
+  .links-wrapper > a:active {
+    transform: scale(1.01);
   }
 </style>
