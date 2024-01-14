@@ -1,4 +1,4 @@
-export function setColorByLang (lang: string)  {
+export function setColorByLang (lang: string): string  {
   switch (lang) {
     case 'TypeScript':
       return '#1E90FF';
