@@ -51,7 +51,9 @@ import Menu from "../icons/Menu.astro";
   </button>
 </nav>
 <script>
-  // LÓGICA PARA BOTÓN DE CONTACTO
+  // LÓGICA PARA BOTÓN HAMBURGUESA
+  const $menuBtn = document.querySelector(".menu-btn") as HTMLButtonElement;
+  const $navUl = document.querySelector(".nav-ul") as HTMLElement;
   const $contactWrapper = document.querySelector(
     ".contact-wrapper"
   ) as HTMLElement;
@@ -59,25 +61,28 @@ import Menu from "../icons/Menu.astro";
     ".contact-btn"
   ) as HTMLButtonElement;
 
-  let clicked = false;
-  function handleClick() {
-    clicked = !clicked;
-    $contactWrapper.style.opacity = clicked ? "1" : "0";
-    $contactWrapper.style.pointerEvents = clicked ? "auto" : "none";
-  }
-  $contactBtn.addEventListener("click", handleClick);
-
-  // LÓGICA PARA BOTÓN HAMBURGUESA
-  const $menuBtn = document.querySelector('.menu-btn') as HTMLButtonElement;
-  const $navUl = document.querySelector('.nav-ul') as HTMLElement;
-
   let toggle = false;
-  function handleClickMenu () {
+  function handleClickMenu() {
     toggle = !toggle;
 
-    $navUl.style.transform = `translateX(${toggle ? 0 : 100}%)`
-  };
-  $menuBtn.addEventListener('click', handleClickMenu);
+    $navUl.style.transform = `translateX(${toggle ? 0 : 100}%)`;
+
+    $contactWrapper.style.opacity = !toggle ? '0' : '0';
+    $contactWrapper.style.pointerEvents = !toggle ? 'none' : 'auto';
+  }
+  $menuBtn.addEventListener("click", handleClickMenu);
+
+  // LÓGICA PARA BOTÓN DE CONTACTO
+
+  let clicked = false;
+  function handleClick() {
+    
+    $contactWrapper.style.opacity = clicked ? "1" : "0";
+    $contactWrapper.style.pointerEvents = clicked ? "auto" : "none";
+    
+    clicked = !clicked;
+  }
+  $contactBtn.addEventListener("click", handleClick);
 </script>
 
 <style>
@@ -137,7 +142,7 @@ import Menu from "../icons/Menu.astro";
   button:active {
     transform: scale(1.05);
   }
-  
+
   .nav-ul {
     position: relative;
     display: flex;
@@ -147,9 +152,9 @@ import Menu from "../icons/Menu.astro";
     font-size: var(--paragraph-size);
     list-style: none;
     transform: translateX(0);
-    transition: transform .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
-  
+
   .nav-ul a {
     display: block;
     color: var(--text-color-light);
@@ -169,13 +174,17 @@ import Menu from "../icons/Menu.astro";
   }
   .menu-btn {
     display: none;
-    border-radius: .6em;
+    border-radius: 0.6em;
   }
   @media (max-width: 850px) {
     .nav-ul {
-      background: linear-gradient(to top, rgba(44, 44, 44, .8), rgba(44, 44, 44, 1));
-      padding: .5em;
-      border-radius: .5em;
+      background: linear-gradient(
+        to top,
+        rgba(44, 44, 44, 0.8),
+        rgba(44, 44, 44, 1)
+      );
+      padding: 0.5em;
+      border-radius: 0.5em;
       position: absolute;
       right: 0;
       bottom: -6.6em;
@@ -185,6 +194,10 @@ import Menu from "../icons/Menu.astro";
     .menu-btn {
       display: grid;
       place-items: center;
+    }
+    .contact-wrapper {
+      bottom: -16em;
+      right: 1em;
     }
   }
 </style>
