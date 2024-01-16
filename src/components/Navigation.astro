@@ -79,7 +79,7 @@ import Menu from "../icons/Menu.astro";
     
     $contactWrapper.style.opacity = clicked ? "1" : "0";
     $contactWrapper.style.pointerEvents = clicked ? "auto" : "none";
-    
+
     clicked = !clicked;
   }
   $contactBtn.addEventListener("click", handleClick);
@@ -109,6 +109,7 @@ import Menu from "../icons/Menu.astro";
     width: 100%;
   }
   .contact-wrapper a {
+    font-size: 1.5em;
     background-color: none;
     display: flex;
     align-items: center;
