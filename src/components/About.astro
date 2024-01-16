@@ -95,16 +95,13 @@ import Transform from "../icons/Transform.astro";
 <style>
   section {
     min-height: 100vh;
-    padding-top: 6em;
+    padding: 6em 0 .6em 0;
   }
   h2 {
     font-size: var(--title-size);
   }
   .accent {
     color: var(--color-2);
-  }
-  picture {
-    flex: 1;
   }
   .avatar {
     aspect-ratio: 4 4;
@@ -114,31 +111,30 @@ import Transform from "../icons/Transform.astro";
   }
   .wrapper {
     display: flex;
-    flex: 1;
     justify-content: space-between;
     align-items: start;
     margin-top: 2em;
   }
   .wrapper-skills {
-    background: linear-gradient(to bottom, rgba(44, 44, 44, .8), rgba(44, 44, 44, .9));
-    border-radius: .6em;
-    box-shadow: 0 0 .8em rgba(44, 44, 44, .9);
-    padding: .5em 1em;
-    display: grid;
-    grid-template-areas: "hard soft";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 1.9em;
+    background: linear-gradient(
+      to bottom,
+      rgba(44, 44, 44, 0.8),
+      rgba(44, 44, 44, 0.9)
+      );
+      border-radius: 0.6em;
+      box-shadow: 0 0 0.8em rgba(44, 44, 44, 0.9);
+      padding: 0.5em 1em;
+      display: flex;
+      gap: 1.9em;
   }
   .wrapper-skills > ul {
-    list-style: none;
-    font-size: 1.4em;
+      list-style: none;
+      font-size: 1.2em;
   }
   .wrapper-skills > ul > li {
     display: flex;
     align-items: center;
     gap: 0.5em;
-    font-size: 1.7em;
     margin-bottom: 0.4em;
   }
   .skills-title {
@@ -149,5 +145,23 @@ import Transform from "../icons/Transform.astro";
   }
   .wrapper-skills > ul:nth-child(2) {
     grid-area: soft;
+  }
+  @media (max-width: 1200px) {
+    .wrapper {
+      flex-flow: column;
+      align-items: center;
+    }
+  }
+  @media (max-width: 800px) {
+    .wrapper-skills {
+      width: 100%;
+      flex-flow: column;
+    }
+    .wrapper-skills li {
+      font-size: 1.1em;
+    }
+    h2 {
+      font-size: var(--mobile-size);
+    }
   }
 </style>

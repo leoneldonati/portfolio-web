@@ -18,8 +18,19 @@ if (currentHour < 12) {
 
 <style>
   span {
+    width: max-content;
     font-weight: bold;
     font-size: 1.1em;
     color: var(--color-2);
+  }
+  @media (max-width: 850px) {
+    span {
+      position: absolute;
+      background-color: var(--text-color-dark);
+      border-radius: .5em;
+      padding: .4em;
+      bottom: -26%;
+      left: 0;
+    }
   }
 </style>

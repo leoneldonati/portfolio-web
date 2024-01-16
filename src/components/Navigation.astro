@@ -1,6 +1,7 @@
 ---
 import LinkedIn from "../icons/LinkedIn.astro";
-import Telegram from '../icons/Telegram.astro'
+import Telegram from "../icons/Telegram.astro";
+import Menu from "../icons/Menu.astro";
 ---
 
 <nav>
@@ -12,52 +13,71 @@ import Telegram from '../icons/Telegram.astro'
       <a href="#about">About</a>
     </li>
     <li>
-      <button class="contact-btn">
-        Contact
-      </button>
+      <button class="contact-btn"> Contact</button>
     </li>
   </ul>
 
+  <!-- links de contacto -->
   <div class="contact-wrapper">
     <ul>
       <li>
-        <a 
+        <a
           href="https://linkedin.com/in/leoneldonati"
           target="_blank"
           title="Go to LinkedIn"
           rel="noreferrer noopener"
         >
-        <LinkedIn />
-        LinkedIn
+          <LinkedIn />
+          LinkedIn
         </a>
       </li>
       <li>
-        <a 
+        <a
           href="https://t.me/leonel_web"
           target="_blank"
           rel="noreferrer noopener"
           title="Go to Telegram"
         >
-        <Telegram />
-        Telegram
+          <Telegram />
+          Telegram
         </a>
       </li>
       <li></li>
     </ul>
   </div>
+
+  <button class="menu-btn">
+    <Menu />
+  </button>
 </nav>
 <script>
-  const $contactWrapper = document.querySelector('.contact-wrapper') as HTMLElement;
-  const $contactBtn = document.querySelector('.contact-btn') as HTMLButtonElement;
+  // LÓGICA PARA BOTÓN DE CONTACTO
+  const $contactWrapper = document.querySelector(
+    ".contact-wrapper"
+  ) as HTMLElement;
+  const $contactBtn = document.querySelector(
+    ".contact-btn"
+  ) as HTMLButtonElement;
 
   let clicked = false;
-  function handleClick () {
+  function handleClick() {
     clicked = !clicked;
-    $contactWrapper.style.opacity = clicked ? '1' : '0';
-    $contactWrapper.style.pointerEvents = clicked ? 'auto' : 'none';
-  };
-  $contactBtn.addEventListener('click', handleClick);
+    $contactWrapper.style.opacity = clicked ? "1" : "0";
+    $contactWrapper.style.pointerEvents = clicked ? "auto" : "none";
+  }
+  $contactBtn.addEventListener("click", handleClick);
 
+  // LÓGICA PARA BOTÓN HAMBURGUESA
+  const $menuBtn = document.querySelector('.menu-btn') as HTMLButtonElement;
+  const $navUl = document.querySelector('.nav-ul') as HTMLElement;
+
+  let toggle = false;
+  function handleClickMenu () {
+    toggle = !toggle;
+
+    $navUl.style.transform = `translateX(${toggle ? 0 : 100}%)`
+  };
+  $menuBtn.addEventListener('click', handleClickMenu);
 </script>
 
 <style>
@@ -67,14 +87,14 @@ import Telegram from '../icons/Telegram.astro'
   .contact-wrapper {
     background-color: #333;
     border: 2px solid var(--color-2);
-    border-radius: .5em;
+    border-radius: 0.5em;
     position: absolute;
     right: 0;
     bottom: -8.7em;
     z-index: 5;
     opacity: 0;
     pointer-events: none;
-    transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .contact-wrapper > ul {
     display: flex;
@@ -87,18 +107,18 @@ import Telegram from '../icons/Telegram.astro'
     background-color: none;
     display: flex;
     align-items: center;
-    gap: .6em;
-    padding: .5em .9em;
+    gap: 0.6em;
+    padding: 0.5em 0.9em;
     text-decoration: none;
     color: var(--text-color-light);
-    transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
   }
   .contact-wrapper a:hover {
-    text-shadow: 0 0 .6em var(--text-color-light);
-    transform: scale(.95);
+    text-shadow: 0 0 0.6em var(--text-color-light);
+    transform: scale(0.95);
   }
   .contact-wrapper a:active {
-    transform: scale(.90);
+    transform: scale(0.9);
   }
   button {
     background: var(--color-2);
@@ -108,25 +128,28 @@ import Telegram from '../icons/Telegram.astro'
     color: var(--text-color-light);
     border: transparent 1px solid;
     border-radius: 0.1em;
-    padding: 0.3em .7em;
+    padding: 0.3em 0.7em;
     transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   button:hover {
-    transform: scale(.95);
+    transform: scale(0.95);
   }
   button:active {
     transform: scale(1.05);
   }
-
-  ul {
+  
+  .nav-ul {
+    position: relative;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
     font-size: var(--paragraph-size);
     list-style: none;
+    transform: translateX(0);
+    transition: transform .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
-
+  
   .nav-ul a {
     display: block;
     color: var(--text-color-light);
@@ -143,5 +166,25 @@ import Telegram from '../icons/Telegram.astro'
   }
   .nav-ul a:active {
     transform: scale(0.94);
+  }
+  .menu-btn {
+    display: none;
+    border-radius: .6em;
+  }
+  @media (max-width: 850px) {
+    .nav-ul {
+      background: linear-gradient(to top, rgba(44, 44, 44, .8), rgba(44, 44, 44, 1));
+      padding: .5em;
+      border-radius: .5em;
+      position: absolute;
+      right: 0;
+      bottom: -6.6em;
+      flex-flow: column;
+      transform: translateX(100%);
+    }
+    .menu-btn {
+      display: grid;
+      place-items: center;
+    }
   }
 </style>
