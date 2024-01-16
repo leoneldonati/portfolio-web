@@ -1,23 +1,19 @@
 ---
-  const currentHour = new Date().getHours();
+const currentHour = new Date().getHours();
 
-  let greeting = "";
+let greeting = "";
 
-  if (currentHour < 12) {
-    greeting = "Good morning!"
-  }
-  else if (currentHour < 18) {
-    greeting = "Good afternoon!"
-  }
-  else {
-    greeting = "Good night!"
-  };
+if (currentHour < 12) {
+  greeting = "Good morning!";
+} else if (currentHour < 18) {
+  greeting = "Good afternoon!";
+} else {
+  greeting = "Good night!";
+}
 ---
 
 <span>
-  {
-    greeting
-  }
+  {greeting}
 </span>
 
 <style>

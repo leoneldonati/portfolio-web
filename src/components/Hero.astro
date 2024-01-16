@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import svg from "../../public/svg-img.svg";
-import arrowSvg from "../../public/mouse-filled.svg"
+import arrowSvg from "../../public/mouse-filled.svg";
 ---
 
 <section class="hero">
@@ -24,13 +24,18 @@ import arrowSvg from "../../public/mouse-filled.svg"
   </div>
 
   <picture>
-    <Image src={svg} loading="lazy" alt="Svg hero" width={400} height={400} class="hero-svg" />
+    <Image
+      src={svg}
+      loading="lazy"
+      alt="Svg hero"
+      width={400}
+      height={400}
+      class="hero-svg"
+    />
   </picture>
 
-  <picture 
-    class="arrow-svg"
-  >
-    <Image 
+  <picture class="arrow-svg">
+    <Image
       src={arrowSvg}
       alt="arrow svg"
       width={50}
@@ -51,7 +56,7 @@ import arrowSvg from "../../public/mouse-filled.svg"
     justify-content: space-between;
     text-align: left;
   }
- 
+
   .arrow-svg {
     position: absolute;
     display: grid;
@@ -59,14 +64,15 @@ import arrowSvg from "../../public/mouse-filled.svg"
     bottom: 5%;
     left: 50%;
     right: 50%;
-    animation: mouse 1s 1s infinite alternate cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation: mouse 1s 1s infinite alternate
+      cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
   @keyframes mouse {
     from {
       transform: translateY(0);
     }
     to {
-      transform: translateY(.4em);
+      transform: translateY(0.4em);
     }
   }
 
@@ -95,7 +101,7 @@ import arrowSvg from "../../public/mouse-filled.svg"
     display: block;
   }
 
-  @media (max-width: 904px) {   
+  @media (max-width: 904px) {
     .hero-svg {
       display: none;
     }

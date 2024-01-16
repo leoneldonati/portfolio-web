@@ -1,19 +1,17 @@
 ---
-import { getRepos } from "../github"
-import ProjectCard from "./ProjectCard.astro"
+import { getRepos } from "../github";
+import ProjectCard from "./ProjectCard.astro";
 
-const repos = await getRepos()
-
+const repos = await getRepos();
 ---
+
 <section id="projects">
   <h2>
     Projects<span>.</span>
   </h2>
 
   <div class="grid">
-
-      {repos?.map(repo => <ProjectCard repo={repo}/>)}
-
+    {repos?.map((repo) => <ProjectCard repo={repo} />)}
   </div>
 </section>
 

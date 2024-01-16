@@ -5,23 +5,18 @@ import Navigation from "./Navigation.astro";
 ---
 
 <header>
-
   <div class="wrapper">
     <Avatar />
-  
-    <h2 class="wrapper-h2">
-      Leonel Donati
-    </h2>
+
+    <h2 class="wrapper-h2">Leonel Donati</h2>
   </div>
 
   <Greetings />
 
   <Navigation />
-
 </header>
 
 <style>
-
   header {
     position: fixed;
     background-color: #292929;
@@ -29,13 +24,13 @@ import Navigation from "./Navigation.astro";
     width: 100%;
     max-width: 1270px;
     top: 0;
-    padding: .5em 0;
-    border-radius: .4em;
+    padding: 0.5em 0;
+    border-radius: 0.4em;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    transition: all .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 
   .wrapper {
