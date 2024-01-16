@@ -1,11 +1,150 @@
+---
+import { Image } from "astro:assets";
+import leoImg from "../../public/avatar.avif";
+import Javascript from "../icons/Javascript.astro";
+import Html from "../icons/Html.astro";
+import Git from "../icons/Git.astro";
+import Node from "../icons/Node.astro";
+import Css from "../icons/Css.astro";
+import AstroIcon from "../icons/AstroIcon.astro";
+import Ear from "../icons/Ear.astro"
+import Coffe from '../icons/Coffe.astro'
+import Brain from '../icons/Brain.astro'
+import Progress from '../icons/Progress.astro'
+import Transform from '../icons/Transform.astro'
+---
+
 <section id="about">
+  <h2>
+    About me<span class="accent">.</span>
+  </h2>
 
+  <div class="wrapper">
+    <picture>
+      <Image
+        src={leoImg}
+        alt="Leonel Donati photo"
+        loading="lazy"
+        width={400}
+        height={500}
+        class="avatar"
+      />
+    </picture>
 
+    <div class="wrapper-skills">
+      <ul>
+        <span class="skills-title">
+          Hard skills<span class="accent">.</span>
+        </span>
 
+        <li>
+          <Javascript />
+          JavaScript
+        </li>
+        <li>
+          <Html />
+          HTML
+        </li>
+        <li>
+          <Css />
+          CSS
+        </li>
+        <li>
+          <Node />
+          Node JS
+        </li>
+        <li>
+          <AstroIcon />
+          Astro
+        </li>
+        <li>
+          <Git />
+          Git
+        </li>
+      </ul>
+
+      <ul>
+        <span class="skills-title">
+          Soft skills<span class="accent">.</span>
+        </span>
+        <li>
+          <Ear/>
+          Communication
+        </li>
+        <li>
+          <Brain />
+          Critical Thinking
+        </li>
+        <li>
+          <Transform />
+          Adaptability
+        </li>
+        <li>
+          <Progress />
+          Pragmatism
+        </li>
+        <li>
+          <Coffe />
+          Hard work
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <style>
   section {
     min-height: 100vh;
+    padding-top: 6em;
+  }
+  h2 {
+    font-size: var(--title-size);
+  }
+  .accent {
+    color: var(--color-2);
+  }
+  picture {
+    flex: 1;
+  }
+  .avatar {
+    aspect-ratio: 4 4;
+    object-fit: cover;
+    border: 2px solid var(--color-2);
+    border-radius: 0.6em;
+  }
+  .wrapper {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 2em;
+  }
+  .wrapper-skills {
+    display: grid;
+    grid-template-areas:
+      "hard soft";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.9em;
+  }
+  .wrapper-skills > ul {
+    list-style: none;
+    font-size: 1.4em;
+  }
+  .wrapper-skills > ul > li {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    font-size: 1.7em;
+    margin-bottom: .4em;
+  }
+  .skills-title {
+    font-size: 3em;
+  }
+  .wrapper-skills > ul:nth-child(1) {
+    grid-area: hard;
+  }
+  .wrapper-skills > ul:nth-child(2) {
+    grid-area: soft;
   }
 </style>
