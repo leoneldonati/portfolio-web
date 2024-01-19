@@ -20,17 +20,6 @@ import Transform from "../icons/Transform.astro";
   </h2>
 
   <div class="wrapper">
-    <picture>
-      <Image
-        src={leoImg}
-        alt="Leonel Donati photo"
-        loading="lazy"
-        width={400}
-        height={500}
-        class="avatar"
-      />
-    </picture>
-
     <div class="wrapper-skills">
       <ul>
         <span class="skills-title">
@@ -89,13 +78,32 @@ import Transform from "../icons/Transform.astro";
         </li>
       </ul>
     </div>
+
+    <div class="wrapper-paragraphs">
+      <p></p>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur
+        minus quod optio sunt earum dolorum placeat perferendis molestias
+        voluptatem. Quidem expedita, reiciendis error laudantium deserunt
+        necessitatibus voluptatibus quaerat placeat atque.
+      </p>
+    </div>
+
+    <Image
+      src={leoImg}
+      alt="Leonel Donati photo"
+      loading="lazy"
+      width={400}
+      height={500}
+      class="avatar"
+    />
   </div>
 </section>
 
 <style>
   section {
     min-height: 100vh;
-    padding: 6em 0 .6em 0;
+    padding: 6em 0 0.6em 0;
   }
   h2 {
     font-size: var(--title-size);
@@ -104,32 +112,55 @@ import Transform from "../icons/Transform.astro";
     color: var(--color-2);
   }
   .avatar {
-    aspect-ratio: 4 4;
     object-fit: cover;
     border: 2px solid var(--color-2);
     border-radius: 0.6em;
+    grid-area: image;
   }
   .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
+    max-width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+      "skills image"
+      "about image";
+    gap: 0.6em;
+    grid-template-columns: 650px 1fr;
+    grid-template-rows:  1fr 100px;
+    justify-content: center;
     margin-top: 2em;
   }
-  .wrapper-skills {
+  .wrapper-paragraphs {
+    border: 2px solid var(--color-2);
+
+    grid-area: about;
     background: linear-gradient(
       to bottom,
       rgba(44, 44, 44, 0.8),
       rgba(44, 44, 44, 0.9)
-      );
-      border-radius: 0.6em;
-      box-shadow: 0 0 0.8em rgba(44, 44, 44, 0.9);
-      padding: 0.5em 1em;
-      display: flex;
-      gap: 1.9em;
+    );
+    box-shadow: 0 0 0.8em rgba(44, 44, 44, 0.9);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+  }
+  .wrapper-skills {
+    border: 2px solid var(--color-2);
+    height: 100%;
+    grid-area: skills;
+    background: linear-gradient(
+      to bottom,
+      rgba(44, 44, 44, 0.8),
+      rgba(44, 44, 44, 0.9)
+    );
+    border-radius: 0.6em;
+    box-shadow: 0 0 0.8em rgba(44, 44, 44, 0.9);
+    padding: 0.5em 1em;
+    display: flex;
+    gap: 1.9em;
   }
   .wrapper-skills > ul {
-      list-style: none;
-      font-size: 1.2em;
+    list-style: none;
+    font-size: 1.2em;
   }
   .wrapper-skills > ul > li {
     display: flex;
@@ -148,11 +179,24 @@ import Transform from "../icons/Transform.astro";
   }
   @media (max-width: 1200px) {
     .wrapper {
-      flex-flow: column;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: 
+      "skills skills"
+      "image about";
     }
   }
   @media (max-width: 800px) {
+    .wrapper {
+      max-width: 400px;
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+      "image"
+      "skills"
+      "about"
+      ;
+      place-items: center;
+    }
     .wrapper-skills {
       width: 100%;
       flex-flow: column;
