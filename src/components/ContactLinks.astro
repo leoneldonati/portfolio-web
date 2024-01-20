@@ -1,0 +1,70 @@
+---
+import LinkedIn from "../icons/LinkedIn.astro";
+import Telegram from "../icons/Telegram.astro";
+import Mail from '../icons/Mail.astro'
+---
+
+<div>
+
+  <a 
+    href="https://linkedin.com/in/leoneldonati"
+    target="_blank"
+    rel="noreferrer noopener"
+    title="Go to LinkedIn profile"
+  >
+  <LinkedIn />
+  LinkedIn
+  </a>
+
+  <a
+    href="https://t.me/leonel_web"
+    target="_blank"
+    rel="noreferrer noopener"
+    title="Go to Telegram chat"
+  >
+  <Telegram />
+  Telegram
+  </a>
+
+  <a 
+    href="mailto:contacto.leoneldonati@gmail.com"
+    title="Go to email!"
+  >
+  <Mail />
+  Email
+  </a>
+
+</div>
+
+<style>
+  div {
+    display: flex;
+    flex-flow: row wrap;
+    gap: .4em;
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+  }
+  a {
+    display: flex;
+    justify-content: start;
+    gap: 0 .4em;
+    align-items: center;
+    border: 2px solid var(--color-2);
+    background: linear-gradient(to top left, var(--color-2), #333 70%);
+    border-radius: .5em;
+    padding: .4em .8em;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.4em;
+  }
+
+  @media (width <= 400px) {
+    div {
+      flex-flow: column;
+      bottom: 5%;
+    }
+  }
+</style>

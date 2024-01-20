@@ -1,6 +1,4 @@
 ---
-import LinkedIn from "../icons/LinkedIn.astro";
-import Telegram from "../icons/Telegram.astro";
 import Menu from "../icons/Menu.astro";
 ---
 
@@ -12,121 +10,33 @@ import Menu from "../icons/Menu.astro";
     <li>
       <a href="#about">About</a>
     </li>
-    <li>
-      <button class="contact-btn"> Contact</button>
-    </li>
+    <button class="menu-btn">
+      <Menu />
+    </button>
   </ul>
-
-  <!-- links de contacto -->
-  <div class="contact-wrapper">
-    <ul>
-      <li>
-        <a
-          href="https://linkedin.com/in/leoneldonati"
-          target="_blank"
-          title="Go to LinkedIn"
-          rel="noreferrer noopener"
-        >
-          <LinkedIn />
-          LinkedIn
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://t.me/leonel_web"
-          target="_blank"
-          rel="noreferrer noopener"
-          title="Go to Telegram"
-        >
-          <Telegram />
-          Telegram
-        </a>
-      </li>
-      <li></li>
-    </ul>
-  </div>
-
-  <button class="menu-btn">
-    <Menu />
-  </button>
 </nav>
+
 <script>
-  // LÓGICA PARA BOTÓN HAMBURGUESA
-  const $menuBtn = document.querySelector(".menu-btn") as HTMLButtonElement;
-  const $navUl = document.querySelector(".nav-ul") as HTMLElement;
-  const $contactWrapper = document.querySelector(
-    ".contact-wrapper"
-  ) as HTMLElement;
-  const $contactBtn = document.querySelector(
-    ".contact-btn"
-  ) as HTMLButtonElement;
-
-  let toggle = false;
-  function handleClickMenu() {
-    toggle = !toggle;
-
-    $navUl.style.transform = `translateX(${toggle ? 0 : 100}%)`;
-
-    $contactWrapper.style.opacity = !toggle ? '0' : '0';
-    $contactWrapper.style.pointerEvents = !toggle ? 'none' : 'auto';
-  }
-  $menuBtn.addEventListener("click", handleClickMenu);
-
-  // LÓGICA PARA BOTÓN DE CONTACTO
+  const $nav = document.querySelector('.nav-ul') as HTMLElement;
+  const $menuBtn = document.querySelector('.menu-btn') as HTMLButtonElement;
 
   let clicked = false;
-  function handleClick() {
-    
-    $contactWrapper.style.opacity = clicked ? "1" : "0";
-    $contactWrapper.style.pointerEvents = clicked ? "auto" : "none";
+  $menuBtn.addEventListener('click', () => {
+    clicked = !clicked
+    $nav.style.transform = `translateX(${clicked ? 0 : 100}%)`
+  })
 
-    clicked = !clicked;
-  }
-  $contactBtn.addEventListener("click", handleClick);
 </script>
+  
 
 <style>
   nav {
     position: relative;
   }
-  .contact-wrapper {
-    background-color: #333;
-    border: 2px solid var(--color-2);
-    border-radius: 0.5em;
-    position: absolute;
-    right: 0;
-    bottom: -8.7em;
-    z-index: 5;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  .contact-wrapper > ul {
-    display: flex;
-    flex-flow: column;
-  }
-  .contact-wrapper li {
-    width: 100%;
-  }
-  .contact-wrapper a {
-    font-size: 1.5em;
-    background-color: none;
-    display: flex;
-    align-items: center;
-    gap: 0.6em;
-    padding: 0.5em 0.9em;
-    text-decoration: none;
-    color: var(--text-color-light);
-    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  .contact-wrapper a:hover {
-    text-shadow: 0 0 0.6em var(--text-color-light);
-    transform: scale(0.95);
-  }
-  .contact-wrapper a:active {
-    transform: scale(0.9);
-  }
   button {
+    position: absolute;
+    top: 0;
+    left: -40%;
     background: var(--color-2);
     cursor: pointer;
     display: block;
@@ -187,18 +97,15 @@ import Menu from "../icons/Menu.astro";
       padding: 0.5em;
       border-radius: 0.5em;
       position: absolute;
+      height: 300px;
       right: 0;
-      bottom: -6.6em;
+      top: 0;
       flex-flow: column;
       transform: translateX(100%);
     }
     .menu-btn {
       display: grid;
       place-items: center;
-    }
-    .contact-wrapper {
-      bottom: -16em;
-      right: 1em;
     }
   }
 </style>

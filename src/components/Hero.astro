@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import svg from "../../public/svg-img.svg";
 import arrowSvg from "../../public/mouse-filled.svg";
+import ContactLinks from "./ContactLinks.astro";
 ---
 
 <section class="hero">
@@ -23,7 +24,6 @@ import arrowSvg from "../../public/mouse-filled.svg";
     </p>
   </div>
 
-  <picture>
     <Image
       src={svg}
       loading="lazy"
@@ -32,7 +32,8 @@ import arrowSvg from "../../public/mouse-filled.svg";
       height={400}
       class="hero-svg"
     />
-  </picture>
+
+    <ContactLinks />
 
   <picture class="arrow-svg">
     <Image
