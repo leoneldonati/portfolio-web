@@ -89,14 +89,14 @@ import Transform from "../icons/Transform.astro";
       </p>
     </div>
 
-    <Image
-      src={leoImg}
-      alt="Leonel Donati photo"
-      loading="lazy"
-      width={400}
-      height={500}
-      class="avatar"
-    />
+    <picture>
+      <Image
+        src={leoImg}
+        alt="Leonel Donati photo"
+        loading="lazy"
+        class="avatar"
+      />
+    </picture>
   </div>
 </section>
 
@@ -112,10 +112,15 @@ import Transform from "../icons/Transform.astro";
     color: var(--color-2);
   }
   .avatar {
+    max-width: 100%;
+    height: auto;
     object-fit: cover;
     border: 2px solid var(--color-2);
     border-radius: 0.6em;
     grid-area: image;
+  }
+  picture {
+    max-width: 400px;
   }
   .wrapper {
     max-width: 90%;
@@ -186,7 +191,7 @@ import Transform from "../icons/Transform.astro";
       "image about";
     }
   }
-  @media (max-width: 800px) {
+  @media (width <= 800px) {
     .wrapper {
       max-width: 400px;
       grid-template-columns: 1fr;
@@ -208,4 +213,5 @@ import Transform from "../icons/Transform.astro";
       font-size: var(--mobile-size);
     }
   }
+
 </style>
