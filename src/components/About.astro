@@ -80,12 +80,17 @@ import Transform from "../icons/Transform.astro";
     </div>
 
     <div class="wrapper-paragraphs">
-      <p></p>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur
-        minus quod optio sunt earum dolorum placeat perferendis molestias
-        voluptatem. Quidem expedita, reiciendis error laudantium deserunt
-        necessitatibus voluptatibus quaerat placeat atque.
+        Hace 3 años que comencé con esta travesía que es programar, desde mi
+        primer Sega a los 8 años, me vi fascinado por el mundo tecnológico.
+        Decidí comenzar mi camino como un <strong>profesional totalmente autodidacta</strong>,
+        formándome con tecnologías web Front-end.
+      </p>
+      <p>
+        Actualmente, poseo manejo de stack web completo, utilizando en mis
+        proyectos tecnologías tales como: React, Node, Astro, Express, Mongo DB,
+        Next JS. Creando así potentes apps interactivas y robustas APIs,
+        ofreciendo así productos de gran calidad.
       </p>
     </div>
 
@@ -103,7 +108,7 @@ import Transform from "../icons/Transform.astro";
 <style>
   section {
     min-height: 100vh;
-    padding: 6em 0 0.6em 0;
+    padding: 6em 0 1.2em 0;
   }
   h2 {
     font-size: var(--title-size);
@@ -131,13 +136,17 @@ import Transform from "../icons/Transform.astro";
       "about image";
     gap: 0.6em;
     grid-template-columns: 650px 1fr;
-    grid-template-rows:  1fr 100px;
+    grid-template-rows: 1fr auto;
     justify-content: center;
     margin-top: 2em;
   }
   .wrapper-paragraphs {
+    display: flex;
+    flex-flow: column;
+    gap: .5em;
+    color: #fff;
     border: 2px solid var(--color-2);
-
+    font-size: larger;
     grid-area: about;
     background: linear-gradient(
       to bottom,
@@ -186,20 +195,19 @@ import Transform from "../icons/Transform.astro";
     .wrapper {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
-      grid-template-areas: 
-      "skills skills"
-      "image about";
+      grid-template-areas:
+        "skills skills"
+        "image about";
     }
   }
   @media (width <= 800px) {
     .wrapper {
       max-width: 400px;
       grid-template-columns: 1fr;
-      grid-template-areas: 
-      "image"
-      "skills"
-      "about"
-      ;
+      grid-template-areas:
+        "image"
+        "skills"
+        "about";
       place-items: center;
     }
     .wrapper-skills {
@@ -213,5 +221,4 @@ import Transform from "../icons/Transform.astro";
       font-size: var(--mobile-size);
     }
   }
-
 </style>
