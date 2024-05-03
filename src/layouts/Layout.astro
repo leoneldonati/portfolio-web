@@ -7,7 +7,7 @@ import { ViewTransitions } from "astro:transitions";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="description" content="Portfolio web Leonel Donati, desarrollo de sitios estáticos, aplicaciones web, API REST. Visita mi GitHub https://github.com/leoneldonati." />
 		<meta name="keywords" content="JavaScript, Web Development, Web, HTML, CSS, React, Node, Leonel web, Astro">
 		<meta name="author" content="Leonel Donati, @leonelweb">
@@ -35,12 +35,21 @@ import { ViewTransitions } from "astro:transitions";
 		scroll-behavior: smooth;
 		/* variables */
 		--color-1: #c8c8c8;
-		--color-2: #7B68EE;
+		--color-2: #a200ff;
 		--text-color-dark: #292929;
 		--text-color-light: #ffffffcc;
 		--title-size: 4.5em;
 		--mobile-size: 3.5em;
 		--paragraph-size: 1.6em;
+
+
+		::-webkit-scrollbar {
+			background: linear-gradient(146deg, rgba(41,41,41,1) 54%, rgba(57,57,57,1) 100%);
+		}
+		::-webkit-scrollbar-thumb {
+			background: var(--color-2);
+			border-radius: .5em;
+		}
 	}
 	*, *::after, *::before {
 		padding: 0;
@@ -52,7 +61,7 @@ import { ViewTransitions } from "astro:transitions";
 	}
 	@font-face {
 		font-family: 'Karla';
-		src: url('./Karla/Karla-VariableFont_wght.ttf'), format('ttf');
+		src: url('./Karla/Karla-VariableFont_wght.ttf') format('ttf');
 	}
 
 	body {

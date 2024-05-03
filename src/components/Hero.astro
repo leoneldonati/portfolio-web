@@ -6,23 +6,24 @@ import ContactLinks from "./ContactLinks.astro";
 ---
 
 <section class="hero">
-  <div>
-    <h1>
-      Hi, I'm Leonel.
-      <span class="title-accent">
-        I build for the <span class="title-word">web.</span>
-      </span>
-    </h1>
-
-    <p>
-      I'm <strong>JavaScript Web Developer</strong>.
-    </p>
-    <p>
-      Currently, I focused on developing <strong
-        >accessible, visually attractive and high-impact</strong
-      > products.
-    </p>
-  </div>
+  <div class="hero_wrapper">
+    <div class="hero_wrapper--text">
+      <h1>
+        Hi, I'm Leonel.
+        <span class="title-accent">
+          I build for the <span class="title-word">web.</span>
+        </span>
+      </h1>
+  
+      <p>
+        I'm <strong>JavaScript Web Developer</strong>.
+      </p>
+      <p>
+        Currently, I focused on developing <strong
+          >accessible, visually attractive and high-impact</strong
+        > products.
+      </p>
+    </div>
 
     <Image
       src={svg}
@@ -32,8 +33,10 @@ import ContactLinks from "./ContactLinks.astro";
       height={400}
       class="hero-svg"
     />
+  </div>
 
-    <ContactLinks />
+
+  <ContactLinks />
 
   <picture class="arrow-svg">
     <Image
@@ -42,6 +45,7 @@ import ContactLinks from "./ContactLinks.astro";
       width={50}
       height={50}
       loading="lazy"
+      class="svg"
     />
     <span>Scroll</span>
   </picture>
@@ -52,10 +56,16 @@ import ContactLinks from "./ContactLinks.astro";
     position: relative;
     min-height: 100vh;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-between;
     text-align: left;
+    padding-top: 20%;
+    gap: 2.5em;
+    
+    & .hero_wrapper {
+      display: flex;
+      flex-flow: row;
+    }
   }
 
   .arrow-svg {
@@ -75,10 +85,6 @@ import ContactLinks from "./ContactLinks.astro";
     to {
       transform: translateY(0.4em);
     }
-  }
-
-  .hero-svg {
-    fill: var(--color-2);
   }
 
   h1 {
@@ -114,21 +120,15 @@ import ContactLinks from "./ContactLinks.astro";
     }
   }
   @media (width <= 500px) {
+    section {
+      padding-top: 45%;
+
+    }
     h1 {
-      font-size: 2.4em;
+      font-size: 2.9em;
+    }
+    p {
+      font-size: 1.4em;
     }
   }
-
 </style>
-<script>
-  const $wordContainer = document.querySelector(".title-word") as HTMLElement;
-  const words = ["web.", "user."];
-
-  let s = false;
-
-  function changeWords() {
-    s = !s;
-    $wordContainer.innerText = s ? words[1] : words[0];
-  }
-  setInterval(changeWords, 3000);
-</script>

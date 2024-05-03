@@ -1,57 +1,32 @@
 ---
-import type { RepoInfo } from "../github";
-import { setColorByLang } from "../helpers/colors";
 
-interface Props {
-  repo: RepoInfo;
-}
-const { repo } = Astro.props;
-
-const updatedDate = new Date(repo.updatedAt).toLocaleDateString();
-const pushDate = new Date(repo.pushedAt).toLocaleDateString();
-const createdDate = new Date(repo.createdAt).toLocaleDateString();
-
-const color = setColorByLang(repo.lang);
 ---
 
 <article>
   <div class="wrapper">
     <div class="top-wrapper__left">
-      <h3>
-        {repo.name}
-      </h3>
+      <h3></h3>
       <span>
         Created:
-        <strong>{createdDate}</strong>
+        <strong></strong>
       </span>
       <span>
         Last update:
-        <strong>{updatedDate}</strong>
+        <strong></strong>
       </span>
       <span>
         Last push:
-        <strong>{pushDate}</strong>
+        <strong></strong>
       </span>
     </div>
 
     <div class="top-wrapper__right">
       <div class="links-wrapper">
-        <a
-          href={repo.projectUrl}
-          title={`Link to ${repo.name} in GitHub`}
-          rel="noreferrer noopener"
-          target="_blank"
-        >
+        <a href="" title="" rel="noreferrer noopener" target="_blank">
           GitHub
         </a>
 
-        <a
-          href={repo.homepage === null ? "-" : repo.homepage}
-          title={`Link to ${repo.name} in Deploy`}
-          rel="noreferrer noopener"
-          target="_blank"
-          style=`pointer-events: ${repo.homepage !== null ? 'auto': 'none'}; opacity: ${repo.homepage !== null ? 1 : .5};`
-        >
+        <a href="" title="" rel="noreferrer noopener" target="_blank">
           Deploy
         </a>
       </div>
@@ -59,20 +34,14 @@ const color = setColorByLang(repo.lang);
       <ul>
         <li>
           Language:
-          <strong style=`color: ${color};`
-            >{repo.lang === null ? "None" : repo.lang}</strong
-          >
+          <strong></strong>
         </li>
-        <li>
-          {repo.visibility ? "Public" : "Private"}
-        </li>
+        <li></li>
       </ul>
     </div>
   </div>
   <div class="description">
-    <p>
-      {repo.description === null ? "No description" : repo.description}
-    </p>
+    <p></p>
   </div>
 </article>
 

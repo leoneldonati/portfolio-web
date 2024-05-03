@@ -12,6 +12,9 @@ import Coffe from "../icons/Coffe.astro";
 import Brain from "../icons/Brain.astro";
 import Progress from "../icons/Progress.astro";
 import Transform from "../icons/Transform.astro";
+import { getNumberOfRepos } from "../services/github";
+
+const repos = await getNumberOfRepos()
 ---
 
 <section id="about">
@@ -81,16 +84,16 @@ import Transform from "../icons/Transform.astro";
 
     <div class="wrapper-paragraphs">
       <p>
-        Hace 3 años que comencé con esta travesía que es programar, desde mi
-        primer Sega a los 8 años, me vi fascinado por el mundo tecnológico.
-        Decidí comenzar mi camino como un <strong>profesional totalmente autodidacta</strong>,
-        formándome con tecnologías web Front-end.
+        3 years ago I began this journey of programming, from my first Sega at
+        age 8, I found myself fascinated by the technological world. I decided
+        to start my path as a totally <strong>self-taught professional</strong>, training with
+        Front-end web technologies.
       </p>
       <p>
-        Actualmente, poseo manejo de stack web completo, utilizando en mis
-        proyectos tecnologías tales como: React, Node, Astro, Express, Mongo DB,
-        Next JS. Creando así potentes apps interactivas y robustas APIs,
-        ofreciendo así productos de gran calidad.
+        Currently, I have complete web stack management, using in my
+        technology projects such as: React, Node, Astro, Express, Mongo DB,
+        NextJS. Thus creating powerful interactive apps and robust APIs,
+        thus offering high quality products.
       </p>
     </div>
 
@@ -102,7 +105,16 @@ import Transform from "../icons/Transform.astro";
         class="avatar"
       />
     </picture>
+
+    <div class="wrapper-stats">
+
+      
+        <p><a href="https://github.com/leoneldonati" target="_blank" rel="noreferrer noopener" title="¡Go to GitHub!">Proyects on Github:</a> <span>{repos}</span></p>
+
+        <p>Hours in coding: <i style="color: blueviolet; font-size: 1.3em; margin-left: .3em;">any</i></p>
+    </div>
   </div>
+
 </section>
 
 <style>
@@ -125,15 +137,14 @@ import Transform from "../icons/Transform.astro";
     grid-area: image;
   }
   picture {
-    max-width: 400px;
   }
   .wrapper {
-    max-width: 90%;
+    max-width: 80%;
     margin: 0 auto;
     display: grid;
     grid-template-areas:
       "skills image"
-      "about image";
+      "about stats";
     gap: 0.6em;
     grid-template-columns: 650px 1fr;
     grid-template-rows: 1fr auto;
@@ -143,7 +154,7 @@ import Transform from "../icons/Transform.astro";
   .wrapper-paragraphs {
     display: flex;
     flex-flow: column;
-    gap: .5em;
+    gap: 0.5em;
     color: #fff;
     border: 2px solid var(--color-2);
     font-size: larger;
@@ -163,7 +174,7 @@ import Transform from "../icons/Transform.astro";
     grid-area: skills;
     background: linear-gradient(
       to bottom,
-      rgba(44, 44, 44, 0.8),
+      rgba(33, 33, 33, 0.9),
       rgba(44, 44, 44, 0.9)
     );
     border-radius: 0.6em;
@@ -182,6 +193,26 @@ import Transform from "../icons/Transform.astro";
     gap: 0.5em;
     margin-bottom: 0.4em;
   }
+  .wrapper-stats {
+    border: 2px solid var(--color-2);
+    grid-area: stats;
+    border-radius: 0.6em;
+    background: linear-gradient(to top left, rgba(33, 33, 33, 0.9), rgba(33, 33, 33, 0.8));
+    padding: 0.5em 1em;
+    font-size: 1.4em;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    gap: .8em;
+
+
+    & > p > span {
+      font-size: 1.9em;
+      margin-left: .3em;
+      color: var(--color-2);
+    }
+  }
+
   .skills-title {
     font-size: 3em;
   }
