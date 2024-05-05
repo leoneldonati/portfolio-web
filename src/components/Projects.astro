@@ -1,5 +1,6 @@
 ---
-
+import ProjectCard from "./ProjectCard.astro";
+import image from "../assets/image.jpg";
 ---
 
 <section id="projects">
@@ -8,6 +9,20 @@
   </h2>
 
   <div class="grid">
+    <ProjectCard
+      title="Project"
+      lang="ts"
+      githubUrl="https://github.com/leoneldonati"
+      deployUrl="https://leodonati.site"
+      images={[image]}
+    />
+    <ProjectCard
+      title="Project"
+      lang="ts"
+      githubUrl="https://github.com/leoneldonati"
+      deployUrl="https://leodonati.site"
+      images={[image]}
+    />
   </div>
 </section>
 
@@ -27,7 +42,8 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
     gap: 1em;
     margin-top: 1em;
   }
