@@ -1,21 +1,17 @@
-const apiUrl = "https://api.github.com/users/leoneldonati/repos";
+export async function getRepos(n?: number) {
+  const res = await fetch(`https://api.github.com/users/leoneldonati/repos?q=${n ?? 10}`, {
+    headers: {
+      'Authorization': `Bearer ${import.meta.env.GITHUB_TOKEN}`
+    }
+  })
 
-export async function getNumberOfRepos(): Promise<number> {
-  try {
-    const res = await fetch(apiUrl, {
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
-      },
-    });
+  if (!res.ok) return {
+    ok: res.ok,
+    error: await res.json()
+  }
 
-    if (!res.ok) return 0
-
-    const repos = await res.json() as []
-
-    return repos.length
-  } catch (e) {
-    console.error(e)
-    return 0
+  return {
+    ok: res.ok,
+    data: await res.json()
   }
 }
