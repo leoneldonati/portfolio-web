@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import img from "../assets/carrousell/img.png";
+import { IconClockEdit, IconClockPlus, IconCode, IconLock } from "@tabler/icons-react";
 
 interface Props {
   title: string;
@@ -9,20 +10,37 @@ interface Props {
   private: boolean;
   created: Date | string;
   modified: Date | string;
-  deployUrl?: string;
+  deployUrl: string | null;
   githubUrl: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
 }
 
-const { title, description, lang, created, modified, private: privatedRepo, image, githubUrl, deployUrl } = Astro.props;
+const {
+  title,
+  description,
+  lang,
+  created,
+  modified,
+  private: privatedRepo,
+  image,
+  githubUrl,
+  deployUrl,
+} = Astro.props;
+
+const hasNotDeploy = deployUrl === null;
 ---
 
-<article class="p-2 bg-black/20 rounded-md w-full max-w-[500px]">
+<article
+  class="p-2 bg-black/20 rounded-md w-full max-w-[500px] flex flex-col justify-between"
+>
   <div
     class="grid grid-cols-2 grid-rows-2 place-items-center items-start"
     style="grid-template-areas: 'title title' 'desc data'; grid-template-rows: max-content 1fr;"
   >
-    <h3 class="text-xl underline mb-2" style="grid-area: title;">
+    <h3
+      class="text-xl underline underline-offset-8 mb-4"
+      style="grid-area: title;"
+    >
       {title}
     </h3>
 
@@ -32,77 +50,23 @@ const { title, description, lang, created, modified, private: privatedRepo, imag
 
     <ul
       style="grid-area: data;"
-      class="text-white/80 [&>li]:flex [&>li]:items-center [&>li]:gap-1 md:inline-block hidden"
+      class="text-white/80 [&>li]:flex [&>li]:items-center [&>li]:gap-1 md:inline-block hidden gap-2"
     >
       <li>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-code"
-          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-            d="M7 8l-4 4l4 4"></path><path d="M17 8l4 4l-4 4"></path><path
-            d="M14 4l-4 16"></path></svg
-        >
+        <IconCode />
         <span>{lang}</span>
       </li>
       <li>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-clock-plus"
-          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-            d="M20.984 12.535a9 9 0 1 0 -8.468 8.45"></path><path d="M16 19h6"
-          ></path><path d="M19 16v6"></path><path d="M12 7v5l3 3"></path></svg
-        >
-        <span>Creado: {new Date(created).toLocaleDateString()}</span>
+       <IconClockPlus />
+        <span>{new Date(created).toLocaleDateString('ES')}</span>
       </li>
       <li>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-clock-edit"
-          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-            d="M21 12a9 9 0 1 0 -9.972 8.948c.32 .034 .644 .052 .972 .052"
-          ></path><path d="M12 7v5l2 2"></path><path
-            d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"
-          ></path></svg
-        >
-        <span>Modificado: {new Date(modified).toLocaleDateString()}</span>
+       <IconClockEdit />
+        <span>{new Date(modified).toLocaleDateString('ES')}</span>
       </li>
       <li>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="icon icon-tabler icons-tabler-filled icon-tabler-lock"
-          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-            d="M12 2a5 5 0 0 1 5 5v3a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3v-3a5 5 0 0 1 5 -5m0 12a2 2 0 0 0 -1.995 1.85l-.005 .15a2 2 0 1 0 2 -2m0 -10a3 3 0 0 0 -3 3v3h6v-3a3 3 0 0 0 -3 -3"
-          ></path></svg
-        >
-        <span>{privatedRepo ? 'Privado' : 'Público'}</span>
+        <IconLock />
+        <span>{privatedRepo ? "Privado" : "Público"}</span>
       </li>
     </ul>
   </div>
@@ -121,7 +85,10 @@ const { title, description, lang, created, modified, private: privatedRepo, imag
       id="links-buttons"
     >
       <a
-        href=""
+        href={githubUrl}
+        rel="noreferrer noopener"
+        target="_blank"
+        title="Ir al repositorio."
         class="bg-yellow-300 text-black px-3 py-1 rounded-md flex gap-1 items-center transition shadow-sm shadow-transparent hover:shadow-yellow-100"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -136,8 +103,12 @@ const { title, description, lang, created, modified, private: privatedRepo, imag
         >GitHub</a
       >
       <a
-        href=""
-        class="bg-yellow-300 text-black px-3 py-1 rounded-md flex gap-1 items-center transition shadow-sm shadow-transparent hover:shadow-yellow-100"
+        href={deployUrl}
+        rel="noreferrer noopener"
+        target="_blank"
+        title="Ir al live."
+        class="bg-yellow-300 text-black px-3 py-1 rounded-md gap-1 items-center transition shadow-sm shadow-transparent hover:shadow-yellow-100"
+        style=`display: ${hasNotDeploy ? 'none' : 'flex'};`
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -157,3 +128,17 @@ const { title, description, lang, created, modified, private: privatedRepo, imag
     </div>
   </div>
 </article>
+<style>
+  #images-proyect {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    &:hover {
+      box-shadow: inset 0 0 20px rgba(99, 99, 99, 0.3);
+    }
+    &:hover > #links-buttons {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

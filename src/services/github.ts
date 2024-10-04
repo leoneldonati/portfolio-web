@@ -10,8 +10,11 @@ export async function getRepos(n?: number) {
     error: await res.json()
   }
 
+  const WHITE_LIST = ['chatly', 'books-app', 'portfolio-web', 'ask']
+  const filteredRepos = [...await res.json()].filter(repo => WHITE_LIST.includes(repo.name))
+
   return {
     ok: res.ok,
-    data: await res.json()
+    data: filteredRepos
   }
 }

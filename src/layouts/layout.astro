@@ -1,0 +1,21 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { Image } from "astro:assets";
+import Title from "../components/title.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/LOGOTIPO-LEONEL-WEB.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Leonel Donati - Desarrollador Web</title>
+
+    <ViewTransitions fallback="none" />
+  </head>
+  <body class="bg-[#444]">
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
