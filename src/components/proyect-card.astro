@@ -1,7 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import img from "../assets/carrousell/img.png";
-import { IconClockEdit, IconClockPlus, IconCode, IconLock } from "@tabler/icons-react";
+import {
+  IconClockEdit,
+  IconClockPlus,
+  IconCode,
+  IconLock,
+} from "@tabler/icons-react";
+import { setColorByLang } from "../scripts/colors";
 
 interface Props {
   title: string;
@@ -28,41 +33,39 @@ const {
 } = Astro.props;
 
 const hasNotDeploy = deployUrl === null;
+
+const langColor = setColorByLang(lang);
 ---
 
 <article
-  class="p-2 bg-black/20 rounded-md w-full max-w-[500px] flex flex-col justify-between"
+  class="p-2 bg-black/20 rounded-md w-full max-w-[500px] flex flex-col justify-between text-white"
 >
-  <div
-    class="grid grid-cols-2 grid-rows-2 place-items-center items-start"
-    style="grid-template-areas: 'title title' 'desc data'; grid-template-rows: max-content 1fr;"
-  >
-    <h3
-      class="text-xl underline underline-offset-8 mb-4"
-      style="grid-area: title;"
-    >
-      {title}
-    </h3>
-
-    <p style="grid-area: desc;">
-      {description}
-    </p>
+  <div class="flex flex-col flex-1 items-start justify-between">
+    <div>
+      <h3 class="text-xl underline underline-offset-8 mb-4 capitalize">
+        {title}
+      </h3>
+  
+      <p>
+        {description}
+      </p>
+    </div>
+    
 
     <ul
-      style="grid-area: data;"
-      class="text-white/80 [&>li]:flex [&>li]:items-center [&>li]:gap-1 md:inline-block hidden gap-2"
+      class="text-white/80 flex items-center mt- [&>li]:flex [&>li]:items-center [&>li]:gap-1 gap-2"
     >
-      <li>
+      <li style=`color: ${langColor};`>
         <IconCode />
         <span>{lang}</span>
       </li>
       <li>
-       <IconClockPlus />
-        <span>{new Date(created).toLocaleDateString('ES')}</span>
+        <IconClockPlus />
+        <span>{new Date(created).toLocaleDateString("ES")}</span>
       </li>
       <li>
-       <IconClockEdit />
-        <span>{new Date(modified).toLocaleDateString('ES')}</span>
+        <IconClockEdit />
+        <span>{new Date(modified).toLocaleDateString("ES")}</span>
       </li>
       <li>
         <IconLock />
@@ -71,14 +74,19 @@ const hasNotDeploy = deployUrl === null;
     </ul>
   </div>
 
-  <div id="images-proyect">
-    <Image
-      src={img}
-      alt="Imagen de proyecto 1"
-      width={img.width}
-      height={img.height}
-      loading="lazy"
-    />
+  <div id="images-proyect" >
+    {
+      image && (
+        <Image
+          src={image}
+          alt="Imagen de proyecto 1"
+          width={image?.width}
+          height={image?.height}
+          loading="lazy"
+          class="transition opacity-90"
+        />
+      )
+    }
 
     <div
       class="absolute bottom-6 w-full flex flex-row justify-center gap-2 md:opacity-0 md:translate-y-10 transition"
@@ -135,6 +143,9 @@ const hasNotDeploy = deployUrl === null;
     margin-top: 10px;
     &:hover {
       box-shadow: inset 0 0 20px rgba(99, 99, 99, 0.3);
+    }
+    &:hover > img {
+      opacity: 0.6;
     }
     &:hover > #links-buttons {
       opacity: 1;

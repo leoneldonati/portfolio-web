@@ -25,10 +25,13 @@ const { image, ownerName, ownerWork, testimony } = Astro.props;
     alt=`Fotografía de ${ownerName}`
     class="aspect-square object-cover rounded-full max-w-[70px] shadow-md shadow-white/30"
   />
-  <h3 class="font-bold">
-    {ownerName}
-  </h3>
-  <span class="text-white/70">
-    {ownerWork}
-  </span>
+
+  <div class="text-center">
+    <h3 class="font-bold">
+      {ownerName}
+    </h3>
+    <span class="text-white/70">
+      {ownerWork}
+    </span>
+  </div>
 </div>

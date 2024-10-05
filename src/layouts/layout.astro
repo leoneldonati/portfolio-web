@@ -1,7 +1,12 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import { Image } from "astro:assets";
-import Title from "../components/title.astro";
+
+interface Props {
+  currentPage?: string;
+  description: string;
+}
+
+const { currentPage, description } = Astro.props
 ---
 
 <html lang="es">
@@ -9,13 +14,20 @@ import Title from "../components/title.astro";
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/LOGOTIPO-LEONEL-WEB.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>Leonel Donati - Desarrollador Web</title>
+    <meta name="description" content={description}>
+    <title>{currentPage ? currentPage : 'Leonel Donati - Desarrollador Web'}</title>
 
     <ViewTransitions fallback="none" />
   </head>
-  <body class="bg-[#444]">
+  <body>
     <main>
       <slot />
     </main>
   </body>
 </html>
+
+<style>
+  body {
+    background: linear-gradient(to right top, rgb(33, 33, 33), rgb(44, 44, 44));
+  }
+</style>

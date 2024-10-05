@@ -1,26 +1,36 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Title from "../components/title.astro";
-import { IconHeartHandshake, IconUser } from "@tabler/icons-react";
+import { IconHeartHandshake, IconUser, IconAppWindow } from "@tabler/icons-react";
 ---
 
-<Layout>
+<Layout description="Leonel Donati, desarrollo web JavaScript. Aplicaciones web, sitios, landing pages, e-commerce.">
   <section class="w-full max-w-[1400px] min-h-screen mx-auto overflow-hidden">
-    <a href="/about" id="navigate-btn" transition:name="about-section">
-      <Title t_name="about-title"> ¡Conóceme un poco! </Title>
 
-      <IconUser 
+    <!-- SECCIÓN SOBRE MÍ -->
+    <a href="/about" id="navigate-btn" transition:name="about-section" title="¡Clickea para conocer más sobre mí!">
+      <Title t_name="about-title"> ¡Conóceme! </Title>
+
+      <IconUser
         className="aspect-square object-cover rounded-full max-w-[60px] h-auto absolute bottom-10 z-0 opacity-10 text-white/80"
         id="image"
         transition:name="about-img"
       />
     </a>
-    <a href="/projects" id="navigate-btn">
-      <Title> ¡Mira mis proyectos! </Title>
 
-      
+    <!-- SECCIÓN PROYECTOS -->
+    <a href="/projects" id="navigate-btn" title="¡Aquí puedes encontrar mis proyectos!" transition:name="proyect-section">
+      <Title t_name="proyect-title"> ¡Mira mis proyectos! </Title>
+
+      <IconAppWindow
+        className="aspect-square object-cover rounded-full max-w-[60px] h-auto absolute bottom-10 z-0 opacity-10 text-white/80"
+        id="image"
+        transition:name="project-img"
+      />
     </a>
-    <a href="/contact" id="navigate-btn">
+
+    <!-- SECCIÓN CONTACTO -->
+    <a href="/contact" id="navigate-btn" title="¡Hablemos! Estoy seguro que podemos crear algo increíble.">
       <Title> ¡Trabajemos juntos! </Title>
 
       <IconHeartHandshake
@@ -28,7 +38,9 @@ import { IconHeartHandshake, IconUser } from "@tabler/icons-react";
         id="image"
       />
     </a>
-    <a href="#" id="navigate-btn">
+
+    <!-- BLOG (NO DISPONIBLE AÚN) -->
+    <a href="#" id="navigate-btn" style="pointer-events: none; opacity: .7;" title="¡Aún no esta disponible el blog!">
       <Title> ¡Visita mi blog! </Title>
     </a>
   </section>
@@ -67,7 +79,7 @@ import { IconHeartHandshake, IconUser } from "@tabler/icons-react";
 
     & > h2 {
       transition: transform 0.2s ease;
-      transform: scale(0.60);
+      transform: scale(0.6);
     }
     &:hover > h2 {
       transform: scale(1);

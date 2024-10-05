@@ -1,0 +1,43 @@
+---
+import GoHomeBtn from "../components/go-home-btn.astro";
+import ProyectCard from "../components/proyect-card.astro";
+import Title from "../components/title.astro";
+import Layout from "../layouts/layout.astro";
+import codeImg from "../assets/code.png"
+import { getRepos } from "../services/github";
+
+const { ok, data } = await getRepos();
+---
+
+<Layout
+  currentPage="Proyectos"
+  description="Aquí puedes encontrar algunos de mis proyectos, construyo aplicaciones con JavaScript. Productos de máxima calidad y excelente precio."
+>
+  <section
+    class="min-h-screen relative w-full p-2"
+    transition:name="proyect-section"
+  >
+    <GoHomeBtn />
+
+    <Title t_name="proyect-title" class="text-center my-6">Mis proyectos.</Title>
+
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2" transition:name="project-img">
+      {
+        ok &&
+          data.map((repo) => (
+            <ProyectCard
+              title={repo.name}
+              description={repo.description}
+              lang={repo.language}
+              private={repo.private}
+              created={repo.created_at}
+              modified={repo.updated_at}
+              deployUrl={repo.homepage}
+              githubUrl={repo.svn_url}
+              image={codeImg}
+            />
+          ))
+      }
+    </div>
+  </section>
+</Layout>
