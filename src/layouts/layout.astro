@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-
+import shot1 from "../assets/shot-1.png"
+import shot2 from "../assets/shot-2.png"
 interface Props {
   currentPage?: string;
   description: string;
@@ -15,6 +16,21 @@ const { currentPage, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/LOGOTIPO-LEONEL-WEB.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href={Astro.url.href}>
+
+    <!-- OG -->
+    <meta property="og:description" content={description}>
+    <meta property="og:image" content={shot1.src}>
+    <meta property="og:url" content={Astro.url.href}>
+
+    <!-- TWITTER - X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={`Ingresa a mi sección ${currentPage}`}>
+    <meta name="twitter:description" content={`En esta sección ${currentPage} podras encontrar a la brevedad lo que buscas.`}>
+    <meta name="twitter:image" content={shot2.src}>
+
+    
     <title>
       {currentPage ? currentPage : "Leonel Donati - Desarrollador Web"}
     </title>
