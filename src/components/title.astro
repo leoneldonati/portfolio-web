@@ -2,10 +2,11 @@
 interface Props {
   t_name?: string;
   class?: string;
+  style?: string;
 }
 
-const { t_name, class: className } = Astro.props
+const { t_name, class: className, style } = Astro.props
 ---
-<h2 class=`${className} md:text-[2em] sm:text-[1.5em] text-[1em] font-bold text-white text-clip ` transition:name={t_name}>
+<h2 style={style} class=`${className} md:text-[2em] sm:text-[1.5em] text-[1em] font-bold text-white text-clip ` transition:name={t_name}>
   <slot/> 
 </h2>

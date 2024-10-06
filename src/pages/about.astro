@@ -6,41 +6,42 @@ import image from "../assets/no-bg.jpeg";
 import GoHomeBtn from "../components/go-home-btn.astro";
 import TestimonyCard from "../components/testimony-card.astro";
 
-import leoImg from "../assets/no-bg.jpeg"
+import leoImg from "../assets/no-bg.jpeg";
 ---
 
-<Layout description="Hola! Soy Leonel, esta es la página para conocerme un poco como persona y lo que opina la gente que ha trabajado conmigo. ¡Entra y entérate!">
-  <section transition:name="about-section" class="min-h-screen w-full relative p-2">
-
+<Layout
+  currentPage="Sobre mí"
+  description="Hola! Soy Leonel, esta es la página para conocerme un poco como persona y lo que opina la gente que ha trabajado conmigo. ¡Entra y entérate!"
+>
+  <section
+    transition:name="about-section"
+    class="min-h-screen w-full relative p-2"
+  >
     <GoHomeBtn />
 
-    <Title class="my-6 text-center" t_name="about-title"> ¡Hola, mi nombre es Leonel! </Title>
-
+    <Title class="my-6 text-center" t_name="about-title">
+      ¡Hola, mi nombre es Leonel!
+    </Title>
 
     <article class="flex flex-col items-center md:flex-row justify-center">
-
       <div class="text-white text-xl max-w-[37ch]">
         <p>
-          Soy un entusiasta, hábil desarrollador. <br>Un gran amante de crear, innovar y ofrecer soluciones.
+          Soy un entusiasta, hábil desarrollador. <br />Un gran amante de crear,
+          innovar y ofrecer soluciones.
         </p>
-        <p>
-          Mi misión principal es resolver esa necesidad que tiene el otro.
-        </p>
-        <p>
-          Ofrezco excelencia y calidad, a un mejor precio.
-        </p>
+        <p>Mi misión principal es resolver esa necesidad que tiene el otro.</p>
+        <p>Ofrezco excelencia y calidad, a un mejor precio.</p>
       </div>
       <Image
         src={image}
         height={image.height}
         width={image.width}
-        alt='Foto selfie mía sonrriendo.'
+        alt="Foto selfie mía sonrriendo."
         transition:name="about-img"
-        class='aspect-square object-cover max-w-[300px] w-full rounded-md shadow-md shadow-black/70'
-        title='Leonel Donati, desarrollador web.'
+        class="aspect-square object-cover max-w-[300px] w-full rounded-md shadow-md shadow-black/70"
+        title="Leonel Donati, desarrollador web."
       />
     </article>
-
 
     <article class="mt-20">
       <h3 class="text-white font-bold text-2xl text-center mb-4">

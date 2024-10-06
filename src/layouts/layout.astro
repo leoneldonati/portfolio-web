@@ -6,7 +6,7 @@ interface Props {
   description: string;
 }
 
-const { currentPage, description } = Astro.props
+const { currentPage, description } = Astro.props;
 ---
 
 <html lang="es">
@@ -14,13 +14,15 @@ const { currentPage, description } = Astro.props
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/LOGOTIPO-LEONEL-WEB.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description}>
-    <title>{currentPage ? currentPage : 'Leonel Donati - Desarrollador Web'}</title>
+    <meta name="description" content={description} />
+    <title>
+      {currentPage ? currentPage : "Leonel Donati - Desarrollador Web"}
+    </title>
 
     <ViewTransitions fallback="none" />
   </head>
   <body>
-    <main>
+    <main class="max-w-[1200px] mx-auto">
       <slot />
     </main>
   </body>
