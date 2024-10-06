@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { currentPage, description } = Astro.props;
+const defaultTitle = "Leonel Donati - Desarrollador Web"
 ---
 
 <html lang="es">
@@ -21,18 +22,19 @@ const { currentPage, description } = Astro.props;
 
     <!-- OG -->
     <meta property="og:description" content={description}>
-    <meta property="og:image" content="/shot-1.png">
+    <meta property="og:image" content="https://res.cloudinary.com/dzmuriaby/image/upload/v1728187838/twvlaq9sj7bwbqfbipdo.png">
     <meta property="og:url" content={Astro.url.href}>
 
     <!-- TWITTER - X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content={`Ingresa a mi sección ${currentPage}`}>
-    <meta name="twitter:description" content={`En esta sección ${currentPage} podras encontrar a la brevedad lo que buscas.`}>
-    <meta name="twitter:image" content="/shot-2.png">
-
+    <meta name="twitter:title" content={currentPage ? `Ingresa a mi sección ${currentPage}` : defaultTitle}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content="https://res.cloudinary.com/dzmuriaby/image/upload/v1728187847/j9qdaa5ooamyxitiuhm0.png">
+    <meta name="twitter:image:alt" content="Imagen del sitio web en un shot inclinado.">
+    <meta name="twitter:site" content="@_leodonati">
     
     <title>
-      {currentPage ? currentPage : "Leonel Donati - Desarrollador Web"}
+      {currentPage ? currentPage : defaultTitle}
     </title>
 
     <ViewTransitions fallback="none" />
