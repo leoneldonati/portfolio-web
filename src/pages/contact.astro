@@ -21,12 +21,11 @@ const currentDate = format(new Date(), "full");
   <section>
     <GoHomeBtn />
 
-    <Title style="grid-area: title; margin-top: 70px;" t_name="contact-title">
+    <Title style=" margin-top: 10px;" t_name="contact-title">
       Contáctame, creemos algo increíble.
     </Title>
 
-    <div style="grid-area: rrss; height: 100%;" class="mt-[0%] md:mt-[10%]">
-     
+    <div>
       <ul
         class="flex flex-col gap-6 h-full md:h-[60%] justify-center md:max-w-full max-w-[400px] mx-auto"
       >
@@ -91,7 +90,6 @@ const currentDate = format(new Date(), "full");
     </div>
 
     <footer
-      style="grid-area: footer;"
       class="flex flex-col md:flex-row gap-4 items-center justify-center md:mt-0 mt-[100px]"
     >
       <strong class="md:text-xl text-white text-sm"
@@ -108,18 +106,12 @@ const currentDate = format(new Date(), "full");
     min-height: 100dvh;
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: max-content 1fr 60px;
-    grid-template-areas: "title title" "rrss email" "footer footer";
-    place-content: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
     gap: 10px;
     text-align: center;
     padding: 10px;
-    @media (max-width: 820px) {
-      grid-template-columns: 1fr;
-      grid-template-areas: "title" "rrss" "email" "footer";
-      grid-template-rows: max-content 1fr 1fr 100px;
-    }
+    
   }
 </style>
