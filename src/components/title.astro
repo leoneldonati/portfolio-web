@@ -7,6 +7,6 @@ interface Props {
 
 const { t_name, class: className, style } = Astro.props
 ---
-<h2 style={style} class=`${className} md:text-[2em] sm:text-[1.5em] text-[1em] font-bold text-white text-clip ` transition:name={t_name}>
+<h2 style={style} class=`${className} md:text-[2em] sm:text-[1.5em] text-[1em] font-bold text-white text-clip backdrop-blur p-3` transition:name={t_name}>
   <slot/> 
 </h2>

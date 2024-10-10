@@ -1,46 +1,59 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Title from "../components/title.astro";
-import { IconHeartHandshake, IconUser, IconAppWindow } from "@tabler/icons-react";
+import {
+  IconHeartHandshake,
+  IconUser,
+  IconAppWindow,
+} from "@tabler/icons-react";
 ---
 
-<Layout description="Leonel Donati, desarrollo web JavaScript. Aplicaciones web, sitios, landing pages, e-commerce.">
+<Layout
+  description="Leonel Donati, desarrollo web JavaScript. Aplicaciones web, sitios, landing pages, e-commerce."
+>
   <section class="w-full max-w-[1400px] min-h-screen mx-auto overflow-hidden">
-
     <!-- SECCIÓN SOBRE MÍ -->
-    <a href="/about" id="navigate-btn" transition:name="about-section" title="¡Clickea para conocer más sobre mí!">
+    <a
+      href="/about"
+      id="navigate-btn"
+      transition:name="about-section"
+      title="¡Clickea para conocer más sobre mí!"
+    >
       <Title t_name="about-title"> ¡Conóceme! </Title>
 
-      <IconUser
-        className="aspect-square object-cover rounded-full max-w-[60px] h-auto absolute bottom-10 z-0 opacity-10 text-white/80"
-        id="image"
-        transition:name="about-img"
-      />
+      <IconUser id="image" transition:name="about-img" />
     </a>
 
     <!-- SECCIÓN PROYECTOS -->
-    <a href="/projects" id="navigate-btn" title="¡Aquí puedes encontrar mis proyectos!" transition:name="proyect-section">
+    <a
+      href="/projects"
+      id="navigate-btn"
+      title="¡Aquí puedes encontrar mis proyectos!"
+      transition:name="proyect-section"
+    >
       <Title t_name="proyect-title"> ¡Mira mis proyectos! </Title>
 
-      <IconAppWindow
-        className="aspect-square object-cover rounded-full max-w-[60px] h-auto absolute bottom-10 z-0 opacity-10 text-white/80"
-        id="image"
-        transition:name="project-img"
-      />
+      <IconAppWindow id="image" transition:name="project-img" />
     </a>
 
     <!-- SECCIÓN CONTACTO -->
-    <a href="/contact" id="navigate-btn" title="¡Hablemos! Estoy seguro que podemos crear algo increíble.">
+    <a
+      href="/contact"
+      id="navigate-btn"
+      title="¡Hablemos! Estoy seguro que podemos crear algo increíble."
+    >
       <Title t_name="contact-title"> ¡Trabajemos juntos! </Title>
 
-      <IconHeartHandshake
-        className="aspect-square object-cover rounded-full max-w-[60px] h-auto absolute bottom-10 z-0 opacity-10 text-white/80"
-        id="image"
-      />
+      <IconHeartHandshake id="image" />
     </a>
 
     <!-- BLOG (NO DISPONIBLE AÚN) -->
-    <a href="#" id="navigate-btn" style="pointer-events: none; opacity: .7;" title="¡Aún no esta disponible el blog!">
+    <a
+      href="#"
+      id="navigate-btn"
+      style="pointer-events: none; opacity: .7;"
+      title="¡Aún no esta disponible el blog!"
+    >
       <Title> ¡Visita mi blog! </Title>
     </a>
   </section>
@@ -50,31 +63,25 @@ import { IconHeartHandshake, IconUser, IconAppWindow } from "@tabler/icons-react
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: linear-gradient(to top, #000, #444);
+    background: linear-gradient(to top, #007e74, #169086);
   }
 
   #navigate-btn {
     position: relative;
     max-width: 100%;
     padding: 6px;
-    border: 1px solid rgba(22, 22, 22);
-    background: linear-gradient(
-      to left bottom,
-      rgb(0, 0, 0, 0.6),
-      rgb(33, 33, 33, 0.9)
-    );
+    background: linear-gradient(to left bottom, #007e74, #169086);
     box-shadow: 0 0 10px transparent;
     overflow: hidden;
     transition:
-      transform 0.2s ease-in-out,
       box-shadow 0.4s ease-in;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: inset 0 0 10px #17e7eb;
 
     &:hover {
-      transform: scale(0.99);
-      box-shadow: 0 10px 20px rgb(100, 100, 100);
+      box-shadow: inset 0 0 20px #11d4d8;
     }
 
     & > h2 {
@@ -86,9 +93,18 @@ import { IconHeartHandshake, IconUser, IconAppWindow } from "@tabler/icons-react
     }
 
     & > #image {
+      max-width: 60px;
       width: 100%;
+      height: auto;
+      aspect-ratio: 4/4;
+      object-fit: cover;
+      position: absolute;
+      bottom: 10%;
+      z-index: 0;
+      opacity: .5;
+      color: rgba(240, 240, 240, 0.4);
       transition:
-        max-width 0.1s ease,
+        max-width 0.3s ease,
         border-radius 0.1s ease-in;
     }
     &:hover > #image {

@@ -2,11 +2,13 @@
 import { Image } from "astro:assets";
 import Title from "../components/title.astro";
 import Layout from "../layouts/layout.astro";
-import image from "../assets/no-bg.jpeg";
+import image from "../assets/no-bg.png";
 import GoHomeBtn from "../components/go-home-btn.astro";
 import TestimonyCard from "../components/testimony-card.astro";
+import HiringBtn from "../components/hiring-btn.astro";
 
-import leoImg from "../assets/no-bg.jpeg";
+import cristian from "../assets/testimony/cristian-fitipaldi.png";
+import marta from "../assets/testimony/marta.png";
 ---
 
 <Layout
@@ -23,62 +25,52 @@ import leoImg from "../assets/no-bg.jpeg";
       ¡Hola, mi nombre es Leonel!
     </Title>
 
-    <article class="flex flex-col items-center md:flex-row justify-center">
-      <div class="text-white text-xl max-w-[37ch]">
-        <p>
-          Soy un entusiasta, hábil desarrollador. <br />Un gran amante de crear,
-          innovar y ofrecer soluciones.
-        </p>
-        <p>Mi misión principal es resolver esa necesidad que tiene el otro.</p>
-        <p>Ofrezco excelencia y calidad, a un mejor precio.</p>
+    <article class="flex flex-col items-start justify-center">
+      <div class="flex flex-col items-start md:flex-row justify-center">
+        <div class="text-white text-xl max-w-[37ch] font-semibold mr-2">
+          <p>
+            Soy un hábil desarrollador. <br />Un gran amante de
+            crear, innovar y ofrecer soluciones.
+          </p>
+          <p>
+            Mi misión principal es resolver esa necesidad que tiene el otro.
+          </p>
+          <p>Ofrezco excelencia y calidad, a un mejor precio.</p>
+        </div>
+        <Image
+          src={image}
+          height={image.height}
+          width={image.width}
+          alt="Foto selfie mía sonrriendo."
+          transition:name="about-img"
+          class="aspect-square object-cover max-w-[300px] w-full rounded-md shadow-md shadow-sky-300"
+          title="Leonel Donati, desarrollador web."
+        />
       </div>
-      <Image
-        src={image}
-        height={image.height}
-        width={image.width}
-        alt="Foto selfie mía sonrriendo."
-        transition:name="about-img"
-        class="aspect-square object-cover max-w-[300px] w-full rounded-md shadow-md shadow-black/70"
-        title="Leonel Donati, desarrollador web."
-      />
+
+      <HiringBtn />
     </article>
 
-    <article class="mt-20">
+    <article class="mt-20 w-full">
       <h3 class="text-white font-bold text-2xl text-center mb-4">
-        Lo que dicen mis clientes
+        Testimonios de clientes satisfechos
       </h3>
 
-      <ul class="grid md:grid-cols-4 sm:grid-cols-3 place-items-center gap-2">
+      <ul class="grid md:grid-cols-3 sm:grid-cols-3 place-items-center gap-2">
         <li>
           <TestimonyCard
-            ownerName="Leonel"
-            ownerWork="Desarrollador web FullStack JavaScript"
-            image={leoImg}
-            testimony="Este es mi testimonio actual, eficiencia y profesionalismo"
+            ownerName="Cristian"
+            ownerWork="Herrero y fundador de R&F Soluciones Metalúrgicas."
+            image={cristian}
+            testimony="Profesional y excelente atención, muy conforme con el producto obtenido, súper recomendable."
           />
         </li>
         <li>
           <TestimonyCard
-            ownerName="Leonel"
-            ownerWork="Desarrollador web FullStack JavaScript"
-            image={leoImg}
-            testimony="Este es mi testimonio actual, eficiencia y profesionalismo"
-          />
-        </li>
-        <li>
-          <TestimonyCard
-            ownerName="Leonel"
-            ownerWork="Desarrollador web FullStack JavaScript"
-            image={leoImg}
-            testimony="Este es mi testimonio actual, eficiencia y profesionalismo"
-          />
-        </li>
-        <li>
-          <TestimonyCard
-            ownerName="Leonel"
-            ownerWork="Desarrollador web FullStack JavaScript"
-            image={leoImg}
-            testimony="Este es mi testimonio actual, eficiencia y profesionalismo"
+            ownerName="Marta"
+            ownerWork="Gestora"
+            image={marta}
+            testimony="Muy conforme con el producto obtenido. Precio súper competitivo y mucho profesionalismo."
           />
         </li>
       </ul>
