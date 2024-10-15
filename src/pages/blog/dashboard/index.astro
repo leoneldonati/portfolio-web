@@ -1,0 +1,70 @@
+---
+import { getSession } from "@scripts/auth";
+// if (!getSession(Astro.request)) return Astro.redirect("/blog/login");
+
+import BlogLayout from "@layouts/blog-layout.astro";
+import { IconLogout2, IconFilePlus } from "@tabler/icons-react";
+import CardDashboard from "@components/blog/card-dashboard.astro";
+import PostCard from "@components/blog/post-card/index.astro";
+import { ApiFn } from "@services/posts";
+import ErrorCard from "@components/error-card.astro";
+
+const { getPosts, getSketch, errors } = new ApiFn(Astro.url.origin);
+
+const posts = await getPosts();
+const sketch = await getSketch();
+---
+
+<BlogLayout
+  title="Dashboard"
+  description="Pagina de control del administrador."
+>
+  <section class="min-h-screen text-white p-2">
+    <header class="flex items-center justify-between">
+      <h1 class="text-3xl font-bold">Panel de control</h1>
+
+      <ul
+        class="flex items-center gap-2 [&>li>a]:flex [&>li>a]:items-center [&>li>a]:gap-1 [&>li>a]:py-2 [&>li>a]:px-4 [&>li>a]:rounded [&>li>a]:transition [&>li>a]:shadow [&>li>a]:shadow-transparent"
+      >
+        <li>
+          <a href="/blog/create" class="bg-blue-600/80 hover:shadow-blue-500"
+            ><IconFilePlus /> Crear posteo
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blog/logout"
+            class="bg-red-500 hover:shadow-red-300"
+            data-astro-prefetch="false"><IconLogout2 /> Cerrar sesión</a
+          >
+        </li>
+      </ul>
+    </header>
+
+    <div class="flex gap-3 mt-10">
+      <CardDashboard>
+        <span slot="top"> Publicaciones </span>
+
+        <strong slot="bottom">
+          {posts?.length}
+        </strong>
+      </CardDashboard>
+      <CardDashboard>
+        <span slot="top"> Borradores </span>
+
+        <strong slot="bottom">
+          {sketch?.length}
+        </strong>
+      </CardDashboard>
+    </div>
+
+    <div
+      id="posts-container"
+      class="flex max-w-fit mx-auto h-[700px] flex-col gap-2 items-center overflow-y-scroll overflow-x-hidden py-5"
+    >
+      {posts?.map((post) => <PostCard post={post} />)}
+    </div>
+
+    {errors && <ErrorCard message={errors.message} status={errors.status} />}
+  </section>
+</BlogLayout>

@@ -1,0 +1,20 @@
+---
+import BlogLayout from "@layouts/blog-layout.astro";
+import HeaderBlog from "@components/blog/header-blog.astro";
+import ErrorCard from "@components/error-card.astro";
+
+---
+
+<BlogLayout
+  title="Leonel Donati - Blog"
+  description="Aprende sobre programación web con tutoriales, guías y recursos sobre HTML, CSS, JavaScript, frameworks como React, desarrollo backend con Node.js, bases de datos, y las mejores prácticas para crear sitios web modernos y eficientes."
+>
+  <section class="text-white min-h-screen">
+    <HeaderBlog />
+
+    <h1 class="font-bold text-[3em]">El blog de la web</h1>
+
+    
+    <!-- {!ok && <ErrorCard message={error.message} status={status} />} -->
+  </section>
+</BlogLayout>

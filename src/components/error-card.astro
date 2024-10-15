@@ -1,0 +1,30 @@
+---
+interface Props {
+  message: string;
+  status: number;
+}
+const { message, status } = Astro.props;
+---
+
+<div
+  id="error-card"
+  class="absolute z-40 bottom-5 left-0 flex flex-col items-center w-fit p-4 rounded bg-red-400 border-medium border-red-600 transition translate-y-0 opacity-100"
+>
+  <strong>
+    {status}
+  </strong>
+  <span class="text-clip">
+    {message}
+  </span>
+</div>
+
+<script>
+  const $errorCard = document.querySelector("#error-card") as HTMLElement;
+
+  if ($errorCard) {
+    setTimeout(() => {
+      $errorCard.style.transform = "translateY(100%)";
+      $errorCard.style.opacity = "0";
+    }, 4000);
+  }
+</script>

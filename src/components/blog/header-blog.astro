@@ -1,0 +1,65 @@
+---
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+  IconHomeFilled,
+} from "@tabler/icons-react";
+import { RRSS } from "../../const";
+import RsBtn from "@components/rs-btn.astro";
+---
+
+<header
+  class="flex flex-row items-center justify-between p-4 rounded"
+  id="header-blog"
+>
+  <a href="/" title="Ir al porfolio">
+    <IconHomeFilled />
+  </a>
+
+  <ul
+    class="flex flex-row flex-1 justify-center gap-4 underline-offset-4 [&>li]:transition [&>li]:border-b [&>li]:border-transparent [&>li:hover]:border-white"
+  >
+    <li>
+      <a href="/blog">Inicio</a>
+    </li>
+    <li>
+      <a href="">Tutoriales</a>
+    </li>
+    <li>
+      <a href="">Tips</a>
+    </li>
+    <li>
+      <a href="">Buenas prácticas</a>
+    </li>
+  </ul>
+
+  <ul class="flex items-center gap-2">
+    <li>
+      <RsBtn href={RRSS.X} name="X" styles="padding: 0;">
+        <IconBrandX slot="icon" />
+      </RsBtn>
+    </li>
+    <li>
+      <RsBtn href={RRSS.LinkedIn} name="LinkedIn" styles="padding: 0;">
+        <IconBrandLinkedin slot="icon" />
+      </RsBtn>
+    </li>
+    <li>
+      <RsBtn href={RRSS.GitHub} name="GitHub" styles="padding: 0;">
+        <IconBrandGithub slot="icon" />
+      </RsBtn>
+    </li>
+  </ul>
+</header>
+
+<script>
+  const $header = document.querySelector("#header-blog") as HTMLElement;
+  const BREAK_POINT = 200;
+  document.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    if (scrollY === BREAK_POINT) {
+    } else {
+    }
+  });
+</script>
