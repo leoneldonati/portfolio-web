@@ -8,16 +8,12 @@ export default function Carousel({ files }: { files: File[] }) {
   const goNext = () => {
     if (position === length - 100) return;
 
-    setPosition(pos => pos + 100)
-    console.log('next')
+    setPosition((pos) => pos + 100);
   };
   const goPrev = () => {
     if (position === 0) return;
 
-    setPosition(pos => pos - 100)
-
-    console.log('prev')
-
+    setPosition((pos) => pos - 100);
   };
   return (
     <div className="relative overflow-hidden">
@@ -55,6 +51,10 @@ export default function Carousel({ files }: { files: File[] }) {
       >
         <IconArrowRight className="text-white " />
       </button>
+
+      <span className="absolute z-30 bottom-2 right-2 rounded p-1 text-white">
+        {(position / 100) + 1}/{files.length}
+      </span>
     </div>
   );
 }
