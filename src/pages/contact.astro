@@ -7,6 +7,7 @@ import {
 } from "@tabler/icons-react";
 import { format } from "@formkit/tempo";
 import GoHomeBtn from "../components/go-home-btn.astro";
+import SendEmailForm from "../components/ui/send-email-form";
 import RsBtn from "../components/rs-btn.astro";
 import Title from "../components/title.astro";
 import Layout from "../layouts/layout.astro";
@@ -26,9 +27,11 @@ const currentDate = format(new Date(), "full", "es");
       Contáctame, creemos algo increíble.
     </Title>
 
-    <div>
+    <div class="flex flex-row justify-center items-start">
+      <SendEmailForm client:visible />
+
       <ul
-        class="flex flex-col gap-6 h-full md:h-[60%] justify-center md:max-w-full max-w-[400px] mx-auto"
+        class="flex flex-col gap-6 h-full md:h-[60%] justify-center max-w-[400px] mx-auto"
       >
         <li>
           <RsBtn

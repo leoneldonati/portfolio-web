@@ -1,12 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import {
-  IconBrandAstro,
-  IconBrandReact,
-  IconBrandGithub,
-  IconAppWindow,
-} from "@tabler/icons-react";
+import { IconBrandGithub, IconAppWindow } from "@tabler/icons-react";
 import TecnologyTag from "./tecnology-tag.astro";
+import { colorFrom } from "../utils/colors";
 
 interface Props {
   title: string;
@@ -14,9 +10,10 @@ interface Props {
   deployUrl: string | null;
   githubUrl: string;
   image: ImageMetadata;
+  tags: string[];
 }
 
-const { title, description, image, githubUrl, deployUrl } = Astro.props;
+const { title, description, image, githubUrl, deployUrl, tags } = Astro.props;
 
 const hasNotDeploy = deployUrl === null;
 ---
@@ -34,7 +31,7 @@ const hasNotDeploy = deployUrl === null;
           width={image?.width}
           height={image?.height}
           loading="lazy"
-          class="transition opacity-90 aspect-video object-cover rounded-md"
+          class="transition opacity-90 aspect-video object-cover rounded-md max-w-full"
           id="image"
         />
       )
@@ -70,15 +67,13 @@ const hasNotDeploy = deployUrl === null;
     </h3>
 
     <div class="flex flex-row items-center gap-2">
-      <TecnologyTag color="#DC143C" textColor="#FFF">
-        <IconBrandAstro slot="icon" />
-        Astro
-      </TecnologyTag>
-
-      <TecnologyTag color="#4169E1" textColor="#FFF">
-        <IconBrandReact slot="icon" />
-        React
-      </TecnologyTag>
+      {
+        tags.map((tag) => (
+          <TecnologyTag color={colorFrom(tag)} textColor="#FFF">
+            {tag}
+          </TecnologyTag>
+        ))
+      }
     </div>
 
     <p class="font-semibold">

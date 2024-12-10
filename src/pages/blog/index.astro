@@ -2,7 +2,12 @@
 import BlogLayout from "@layouts/blog-layout.astro";
 import HeaderBlog from "@components/blog/header-blog.astro";
 import ErrorCard from "@components/error-card.astro";
+import PostCard from "@components/blog/post-card/index.astro"
+import { ApiFn } from "@services/posts";
 
+const {errors, getPosts} = new ApiFn(Astro.url.origin)
+
+const posts = await getPosts()
 ---
 
 <BlogLayout
@@ -14,7 +19,13 @@ import ErrorCard from "@components/error-card.astro";
 
     <h1 class="font-bold text-[3em]">El blog de la web</h1>
 
+
+    <div class="flex max-w-fit h-[740px] flex-col gap-2 items-center overflow-y-scroll overflow-x-hidden px-4 pb-6">
+      {
+        posts && posts.map((post) => <PostCard post={post} />)
+      }
+    </div>
     
-    <!-- {!ok && <ErrorCard message={error.message} status={status} />} -->
+    {errors && <ErrorCard message={errors.message} status={errors.status} />} 
   </section>
 </BlogLayout>

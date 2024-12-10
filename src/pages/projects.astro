@@ -3,8 +3,8 @@ import GoHomeBtn from "../components/go-home-btn.astro";
 import ProyectCard from "../components/proyect-card.astro";
 import Title from "../components/title.astro";
 import Layout from "../layouts/layout.astro";
-import dontBeScaredImg from "../assets/proyects/no-te-asustes.png"
-
+import dontBeScaredImg from "../assets/proyects/no-te-asustes.png";
+import livioWebImg from "../assets/proyects/livio-web-3.png";
 ---
 
 <Layout
@@ -17,7 +17,8 @@ import dontBeScaredImg from "../assets/proyects/no-te-asustes.png"
   >
     <GoHomeBtn />
 
-    <Title t_name="proyect-title" class="text-center my-6">Mis proyectos.</Title>
+    <Title t_name="proyect-title" class="text-center my-6">Mis proyectos.</Title
+    >
 
     <div class="flex flex-col gap-2" transition:name="project-img">
       <ProyectCard
@@ -26,6 +27,16 @@ import dontBeScaredImg from "../assets/proyects/no-te-asustes.png"
         image={dontBeScaredImg}
         githubUrl="https://github.com/leoneldonati/no-te-asustes"
         deployUrl="https://noteasustes.fun"
+        tags={["Astro", "TypeScript", "React"]}
+      />
+
+      <ProyectCard
+        title="Livio"
+        description="Livio es un proyecto de red social enfocada en actualidad y política, este proyecto ha sido creado con Astro y se han utilizado características de optimizacion como las 'server islands'."
+        image={livioWebImg}
+        githubUrl="https://github.com/leoneldonati/livio-web"
+        deployUrl="https://livio-web.netlify.app/"
+        tags={["Astro", "TypeScript", "Server Islands"]}
       />
     </div>
   </section>

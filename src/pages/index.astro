@@ -52,6 +52,7 @@ import {
       href="/blog"
       id="navigate-btn"
       title="¡Visita mi blog!"
+      class="pointer-events-none opacity-70"
     >
       <Title> ¡Visita mi blog! </Title>
     </a>
@@ -72,8 +73,7 @@ import {
     background: linear-gradient(to left bottom, #007e74, #169086);
     box-shadow: 0 0 10px transparent;
     overflow: hidden;
-    transition:
-      box-shadow 0.4s ease-in;
+    transition: box-shadow 0.4s ease-in;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +100,7 @@ import {
       position: absolute;
       bottom: 10%;
       z-index: 0;
-      opacity: .5;
+      opacity: 0.5;
       color: rgba(240, 240, 240, 0.4);
       transition:
         max-width 0.3s ease,

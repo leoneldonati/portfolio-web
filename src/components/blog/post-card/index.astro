@@ -1,26 +1,59 @@
 ---
-import { manageLargeContent, getTopicsArray, type Post } from '@scripts/posts'
-import { Image } from 'astro:assets';
-import Topic from "@components/blog/post-card/topic.astro"
+import { manageLargeContent, type Post } from "@scripts/posts";
+import { Image } from "astro:assets";
+import Topic from "@components/blog/post-card/topic.astro";
+import Gallery from "../post-images.astro";
+import { getSession } from "@scripts/auth";
+import { IconMenuDeep } from "@tabler/icons-react";
 interface Props {
   post: Post;
 }
-const {post} = Astro.props
+const { post } = Astro.props;
 
-const topicsArray = getTopicsArray(post.topics)
-const contentParts = manageLargeContent(post.content)
+const contentParts = manageLargeContent(post.content);
 
+const images = post.images;
+
+const isAdmin =
+  getSession(Astro.request) !== null &&
+  getSession(Astro.request)?.id === post.author.id;
 ---
-<article class="flex flex-col items-start gap-2 max-w-[500px] w-full h-auto p-2 bg-blue-600/40 shadow shadow-blue-700/30 rounded">
-  
-  <div class="flex flex-row gap-1 items-center">
-    {topicsArray.map(topic => <Topic topic={topic} />)}
+
+<article
+  class="relative flex flex-col items-start gap-2 max-w-[500px] w-full h-auto p-2 bg-blue-600/40 shadow shadow-blue-700/30 rounded"
+>
+  <div class="w-full flex flex-row justify-between">
+    <span
+      class="text-white"
+    >
+    Escrito por: 
+      <strong>
+        {post.author.name}
+      </strong>
+    </span>
+
+    <button type="button">
+      <IconMenuDeep />
+    </button>
   </div>
-  <h2 class='font-bold text-xl'>
+  {
+    images.length > 1 ? (
+      <Gallery images={images} />
+    ) : (
+      <Image
+        src={images[0].secureUrl}
+        alt=""
+        width={images[0].width}
+        height={images[0].height}
+      />
+    )
+  }
+  <div class="flex flex-row gap-1 items-center">
+    {post.topics.map((topic) => <Topic topic={topic} />)}
+  </div>
+  <h2 class="font-bold text-xl">
     {post.title}
   </h2>
 
-  {
-    contentParts.map(part => <p>{part}</p>)
-  }
+  {contentParts.map((part) => <p>{part}</p>)}
 </article>

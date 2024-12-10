@@ -41,7 +41,7 @@ const sketch = await getSketch();
       </ul>
     </header>
 
-    <div class="flex gap-3 mt-10">
+    <div class="flex gap-3 my-10">
       <CardDashboard>
         <span slot="top"> Publicaciones </span>
 
@@ -60,7 +60,7 @@ const sketch = await getSketch();
 
     <div
       id="posts-container"
-      class="flex max-w-fit mx-auto h-[700px] flex-col gap-2 items-center overflow-y-scroll overflow-x-hidden py-5 px-4"
+      class="flex max-w-fit mx-auto h-[650px] flex-col gap-2 items-center overflow-y-scroll overflow-x-hidden px-4"
     >
       {posts?.map((post) => <PostCard post={post} />)}
     </div>

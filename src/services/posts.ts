@@ -80,4 +80,20 @@ export class ApiFn {
       }
     }
   };
+
+  createPost = async (formData: FormData) => {
+    try {
+      const res = await fetch(`${this.origin}/api/create-post`, {
+        method: "post",
+        body: formData,
+        credentials: 'same-origin'
+      });
+
+      if (!res.ok) return { ok: false, data: await res.json() }
+
+      return { ok: true, data: await res.json() }
+    } catch (error) {
+      return { ok: false, data: null }
+    }
+  }
 }

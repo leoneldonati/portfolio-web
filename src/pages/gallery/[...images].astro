@@ -1,0 +1,24 @@
+---
+import BlogLayout from "@layouts/blog-layout.astro";
+import GalleryCarousel from "@components/gallery";
+import type { Asset } from "@scripts/posts";
+import { IconSquareXFilled } from "@tabler/icons-react";
+
+const uriComponent = Astro.params.images;
+if (!uriComponent) return Astro.redirect("/blog");
+const images = JSON.parse(decodeURIComponent(uriComponent)) as Asset[];
+---
+
+<BlogLayout title={`${images.length} fotos`} description="">
+  <section
+    class="relative min-h-screen grid place-items-center bg-black/90 overflow-hidden"
+  >
+    <a
+      href="/blog"
+      class="absolute z-10 top-6 right-6 text-white [&>svg]:w-8 [&>svg]:h-auto"
+    >
+      <IconSquareXFilled />
+    </a>
+    <GalleryCarousel assets={images} client:visible />
+  </section>
+</BlogLayout>

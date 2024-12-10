@@ -29,23 +29,26 @@ import marta from "../assets/testimony/marta.png";
       <div class="flex flex-col items-start md:flex-row justify-center mb-3">
         <div class="text-white text-xl max-w-[37ch] font-semibold mr-2">
           <p>
-            Soy un hábil desarrollador. <br />Un gran amante de
-            crear, innovar y ofrecer soluciones.
+            Soy un hábil desarrollador. <br />Un gran amante de crear, innovar y
+            ofrecer soluciones.
           </p>
           <p>
-            Mi misión principal es resolver esa necesidad que tiene el otro.
+            Mi misión principal es implementar una solucion óptima y eficiente.
           </p>
           <p>Ofrezco excelencia y calidad, a un mejor precio.</p>
         </div>
-        <Image
-          src={image}
-          height={image.height}
-          width={image.width}
-          alt="Foto selfie mía sonrriendo."
-          transition:name="about-img"
-          class="aspect-square object-cover max-w-[300px] w-full rounded-md shadow-md shadow-sky-300 mt-3 md:mt-0"
-          title="Leonel Donati, desarrollador web."
-        />
+
+        <picture class="aspect-square max-w-[300px]">
+          <Image
+            src={image}
+            height={image.height}
+            width={image.width}
+            alt="Foto selfie mía sonrriendo."
+            transition:name="about-img"
+            class="aspect-square object-cover max-w-full rounded-md shadow-md shadow-sky-300 mt-3 md:mt-0"
+            title="Leonel Donati, desarrollador web."
+          />
+        </picture>
       </div>
 
       <HiringBtn />
