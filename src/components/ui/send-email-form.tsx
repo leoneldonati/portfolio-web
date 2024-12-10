@@ -1,5 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
+
+type Props = {
+  status: number;
+  text: string;
+};
+const StatusCard = (props: Props) => {
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+    <div
+      className={`fixed top-20 left-0 right-0 m-auto z-20 max-w-[350px] border-3 rounded p-4 transition  ${props.status > 399 ? "bg-red-300" : "bg-white/30"} backdrop-blur-sm ${props.status > 399 ? "border-red-500" : "border-white"} grid place-items-center text-small aspect-video overflow-clip`}
+      style={{
+        transform: `translateY(${visible ? 0 : -20}%)`,
+        opacity: visible ? "1" : "0",
+      }}
+    >
+      {props.status > 399 && (
+        <span className="text-4xl text-red-600">
+          <strong>{props.status}</strong>
+        </span>
+      )}
+      <p className="max-w-[40ch] text-xl">{props.text}</p>
+    </div>
+  );
+};
 
 export default function EmailForm() {
   const [info, setInfo] = useState({
@@ -9,8 +40,8 @@ export default function EmailForm() {
   });
 
   const [sending, setSending] = useState(false);
-  const [error, setError] = useState(null);
-
+  const [error, setError] = useState<Props | null>(null);
+  const [succes, setSuccess] = useState(false);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -25,12 +56,18 @@ export default function EmailForm() {
           publicKey: import.meta.env.PUBLIC_KEY,
         }
       )
-      .then((res) => {})
+      .then(() => {
+        setSuccess(true);
+      })
       .catch((err) => {
-        console.error(err);
+        setError({
+          status: err.status,
+          text: err.text,
+        });
       })
       .finally(() => {
         setSending(false);
+        setInfo({ name: "", email: "", msg: "" });
       });
   };
 
@@ -45,55 +82,75 @@ export default function EmailForm() {
     });
   };
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-[400px] h-full w-full flex-1 flex flex-col gap-6 [&>label]:w-full [&>label>*]:w-full [&>label>*]:rounded [&>label>*]:p-2 [&>label>*]:bg-transparent [&>label>*]:backdrop-blur-md [&>label>*]:outline [&>label>*]:outline-white/60 text-white [&>label>*]:border-none"
-    >
-      <label htmlFor="name">
-        <strong>Tu nombre</strong>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Jhon"
-          required
-          onChange={handleChange}
-          value={info.name}
-        />
-      </label>
-      <label htmlFor="email">
-        <strong>Tu email</strong>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="jhon@example.com"
-          required
-          onChange={handleChange}
-          value={info.email}
-        />
-      </label>
-      <label htmlFor="msg">
-        <strong>Hazme saber tu problema</strong>
-        <textarea
-          name="msg"
-          id="msg"
-          className="resize-none flex flex-1 h-32"
-          required
-          onChange={handleChange}
-          value={info.msg}
-          placeholder="¡Me gustaría contratar sus servicios!"
-        ></textarea>
-      </label>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError(null);
+      setSuccess(false);
+    }, 4000);
 
-      <button
-        type="submit"
-        className={`px-4 py-2 rounded-md outline outline-sky-500/75 transition hover:bg-sky-300 hover:text-black  ${sending ? "pointer-events-none" : "pointer-events-auto"} ${sending ? "scale-95" : "scale-100"}`}
-        title="Enviar el mensaje"
+    return () => clearTimeout(timer);
+  }, [error]);
+  return (
+    <div className="max-w-[400px] w-full">
+      <form
+        onSubmit={handleSubmit}
+        className=" h-full w-full flex-1 flex flex-col gap-6 [&>label]:w-full [&>label>*]:w-full [&>label>*]:rounded [&>label>*]:p-2 [&>label>*]:bg-transparent [&>label>*]:backdrop-blur-md [&>label>*]:outline [&>label>*]:outline-white/60 text-white [&>label>*]:border-none"
       >
-        <strong>{sending ? "Enviando" : "Enviar"}</strong>
-      </button>
-    </form>
+        <label htmlFor="name">
+          <strong>Tu nombre</strong>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Jhon"
+            required
+            onChange={handleChange}
+            value={info.name}
+          />
+        </label>
+        <label htmlFor="email">
+          <strong>Tu email</strong>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="jhon@example.com"
+            required
+            onChange={handleChange}
+            value={info.email}
+          />
+        </label>
+        <label htmlFor="msg">
+          <strong>Hazme saber tu problema</strong>
+          <textarea
+            name="msg"
+            id="msg"
+            className="resize-none flex flex-1 h-32"
+            required
+            onChange={handleChange}
+            value={info.msg}
+            placeholder="¡Me gustaría contratar sus servicios!"
+          ></textarea>
+        </label>
+
+        <button
+          type="submit"
+          className={`px-4 py-2 rounded-md outline outline-sky-500/75 transition hover:bg-sky-300 hover:text-black  ${sending ? "pointer-events-none" : "pointer-events-auto"} ${sending ? "scale-95" : "scale-100"}`}
+          title="Enviar el mensaje"
+        >
+          <strong>{sending ? "Enviando" : "Enviar"}</strong>
+        </button>
+      </form>
+
+      {error && !sending && (
+        <StatusCard text={error.text} status={error.status} />
+      )}
+      {!error && succes && (
+        <StatusCard
+          text="¡Gracias por comunicarte conmigo! Estaré contactándome a la brevedad."
+          status={200}
+        />
+      )}
+    </div>
   );
 }
