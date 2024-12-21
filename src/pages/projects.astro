@@ -5,6 +5,7 @@ import Title from "../components/title.astro";
 import Layout from "../layouts/layout.astro";
 import dontBeScaredImg from "../assets/proyects/no-te-asustes.png";
 import livioWebImg from "../assets/proyects/livio-web-3.png";
+import rosarioTravelsWebImg from "../assets/proyects/rosario-travels-web.png";
 ---
 
 <Layout
@@ -37,6 +38,15 @@ import livioWebImg from "../assets/proyects/livio-web-3.png";
         githubUrl="https://github.com/leoneldonati/livio-web"
         deployUrl="https://livio-web.netlify.app/"
         tags={["Astro", "TypeScript", "Server Islands"]}
+      />
+
+      <ProyectCard
+        title="Rosario Travels"
+        description="Rosario Travels es una empresa dedicada al traslado de pasajeros por todo el país, y hacia todo el mundo. Este sitio web fue diseñado mediando las estrictas especificaciones del cliente."
+        image={rosarioTravelsWebImg}
+        githubUrl={null}
+        deployUrl="https://rosario-travels.netlify.app/"
+        tags={["HTML", "ViewTransitions", "Tailwind"]}
       />
     </div>
   </section>

@@ -8,14 +8,15 @@ interface Props {
   title: string;
   description: string;
   deployUrl: string | null;
-  githubUrl: string;
+  githubUrl: string | null;
   image: ImageMetadata;
   tags: string[];
 }
 
 const { title, description, image, githubUrl, deployUrl, tags } = Astro.props;
 
-const hasNotDeploy = deployUrl === null;
+const hasNotDeploy = deployUrl == null;
+const hasNotRepo = githubUrl == null;
 ---
 
 <article
@@ -46,6 +47,7 @@ const hasNotDeploy = deployUrl === null;
         rel="noreferrer noopener"
         target="_blank"
         title="Ir al repositorio."
+        style=`display: ${hasNotRepo ? 'none' : 'flex'};`
         class="bg-sky-500 text-white px-3 py-1 rounded-md flex gap-1 items-center transition shadow-sm shadow-transparent hover:shadow-sky-100"
         ><IconBrandGithub />GitHub</a
       >
