@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Title from "../components/title.astro";
 import Layout from "../layouts/layout.astro";
-import image from "../assets/no-bg.png";
+import image from "../assets/ORANGE_BG.png";
 import GoHomeBtn from "../components/go-home-btn.astro";
 import TestimonyCard from "../components/testimony-card.astro";
 import HiringBtn from "../components/hiring-btn.astro";
@@ -19,15 +19,18 @@ import marta from "../assets/testimony/marta.png";
     transition:name="about-section"
     class="min-h-screen w-full relative p-2"
   >
-    <GoHomeBtn />
-
-    <Title class="my-6 text-center" t_name="about-title">
-      ¡Hola, mi nombre es Leonel!
-    </Title>
+    <header class="flex flex-row items-center justify-between">
+      <GoHomeBtn class="hidden sm:block" />
+    </header>
 
     <article class="flex flex-col items-start justify-center">
-      <div class="flex flex-col items-start md:flex-row justify-center mb-3">
-        <div class="text-white text-xl max-w-[37ch] font-semibold mr-2">
+      <div
+        class="flex items-start sm:items-center flex-row justify-center mb-3"
+      >
+        <div class="text-white max-w-[37ch] font-semibold mr-2">
+          <Title class="mb-2" t_name="about-title">
+            ¡Hola, mi nombre es Leonel!
+          </Title>
           <p>
             Soy un hábil desarrollador. <br />Un gran amante de crear, innovar y
             ofrecer soluciones.
@@ -38,17 +41,15 @@ import marta from "../assets/testimony/marta.png";
           <p>Ofrezco excelencia y calidad, a un mejor precio.</p>
         </div>
 
-        <picture class="aspect-square max-w-[300px]">
-          <Image
-            src={image}
-            height={image.height}
-            width={image.width}
-            alt="Foto selfie mía sonrriendo."
-            transition:name="about-img"
-            class="aspect-square object-cover max-w-full rounded-md shadow-md shadow-sky-300 mt-3 md:mt-0"
-            title="Leonel Donati, desarrollador web."
-          />
-        </picture>
+        <Image
+          src={image}
+          height={image.height}
+          width={image.width}
+          alt="Foto selfie mía sonrriendo."
+          transition:name="about-img"
+          class="aspect-square object-cover object-top max-w-[100px] sm:max-w-[250px] md:max-w-[350px] w-full rounded-full shadow-md shadow-secondary mt-3 md:mt-0"
+          title="Leonel Donati, desarrollador web."
+        />
       </div>
 
       <HiringBtn />
@@ -78,5 +79,7 @@ import marta from "../assets/testimony/marta.png";
         </li>
       </ul>
     </article>
+
+    <GoHomeBtn class="sm:hidden fixed bottom-2 right-2" />
   </section>
 </Layout>

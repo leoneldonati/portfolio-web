@@ -2,6 +2,9 @@
 import { IconHome2 } from "@tabler/icons-react";
 ---
 
-<a href="/" class=" rounded-full flex justify-center items-center absolute top-6 left-0 z-30 p-3 bg-white">
+<a
+  href="/"
+  class=`rounded-full flex justify-center items-center p-3 bg-white ${Astro.props.class}`
+>
   <IconHome2 />
 </a>

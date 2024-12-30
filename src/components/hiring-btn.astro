@@ -1,42 +1,57 @@
-<div class="rounded overflow-hidden">
-  <a
-    href="https://linkedin.com/in/leoneldonati"
-    rel="noreferrer noopener"
-    title="¡Disponibilidad full-time!"
-    class="p-2 rounded-xl text-white font-bold">Disponible para trabajar</a
-  >
-</div>
+---
+import { IconMessageDots } from "@tabler/icons-react";
+---
+
+<a
+  href="https://wa.me/3417502479"
+  rel="noreferrer noopener"
+  title="¡Disponibilidad full-time!"
+  class="py-4 px-8 rounded-xl text-white font-bold bg-primary/80 flex flex-row gap-2"
+>
+  Disponible para trabajar <IconMessageDots />
+</a>
 
 <style>
   a {
-    display: block;
-    border: 3px solid transparent;
-    border-radius: 10px;
-    background-clip: padding-box, border-box;
-    border-image: linear-gradient(45deg, #ff0080, #ff8c00, #00ff80, #0080ff);
-    border-image-slice: 1;
-    animation: border 6s 0.1s alternate infinite;
-    border-radius: 1em;
-  }
+    transition: transform 0.2s ease-in-out;
+    animation: shadow 1s infinite alternate;
 
-  @keyframes border {
+    &:hover {
+      animation: none;
+      transform: scale(1.05);
+    }
+
+    &:hover > svg {
+      animation: hoop 0.8s linear;
+    }
+
+    & > svg {
+      animation: none;
+    }
+  }
+  @keyframes shadow {
+    from {
+      box-shadow: 2px 2px 10px #ff7800;
+    }
+    to {
+      box-shadow: 2px 4px 18px #ffae00;
+    }
+  }
+  @keyframes hoop {
     0% {
-      border-image-source: linear-gradient(
-        45deg,
-        #ff0080,
-        #ff8c00,
-        #00ff80,
-        #0080ff
-      );
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    75% {
+      transform: translateY(-5px);
     }
     100% {
-      border-image-source: linear-gradient(
-        45deg,
-        #0080ff,
-        #ff0080,
-        #ff8c00,
-        #00ff80
-      );
+      transform: translateY(0px);
     }
   }
 </style>

@@ -94,7 +94,7 @@ export default function EmailForm() {
     <div className="max-w-[400px] w-full">
       <form
         onSubmit={handleSubmit}
-        className=" h-full w-full flex-1 flex flex-col gap-6 [&>label]:w-full [&>label>*]:w-full [&>label>*]:rounded [&>label>*]:p-2 [&>label>*]:bg-transparent [&>label>*]:backdrop-blur-md [&>label>*]:outline [&>label>*]:outline-white/60 text-white [&>label>*]:border-none"
+        className=" h-full w-full flex-1 flex flex-col gap-6 [&>label]:w-full [&>label>*]:w-full [&>label>*]:rounded [&>label>*]:p-2 [&>label>*]:bg-primary/40 [&>label>*::placeholder]:text-white/70  [&>label>*]:backdrop-blur-md [&>label>*]:outline [&>label>*]:outline-white/60 text-white [&>label>*]:border-none"
       >
         <label htmlFor="name">
           <strong>Tu nombre</strong>
@@ -135,10 +135,24 @@ export default function EmailForm() {
 
         <button
           type="submit"
-          className={`px-4 py-2 rounded-md outline outline-sky-500/75 transition hover:bg-sky-300 hover:text-black  ${sending ? "pointer-events-none" : "pointer-events-auto"} ${sending ? "scale-95" : "scale-100"}`}
+          className={`px-4 py-2 flex flex-row justify-center gap-2 rounded-md outline outline-primary/75 transition hover:bg-primary/40  ${sending ? "pointer-events-none" : "pointer-events-auto"} ${sending ? "scale-95" : "scale-100"}`}
           title="Enviar el mensaje"
         >
           <strong>{sending ? "Enviando" : "Enviar"}</strong>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+          </svg>
         </button>
       </form>
 

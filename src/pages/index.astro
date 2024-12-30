@@ -31,7 +31,7 @@ import {
       title="¡Aquí puedes encontrar mis proyectos!"
       transition:name="proyect-section"
     >
-      <Title t_name="proyect-title"> ¡Mira mis proyectos! </Title>
+      <Title t_name="proyect-title"> ¡Mis proyectos! </Title>
 
       <IconAppWindow id="image" transition:name="project-img" />
     </a>
@@ -42,7 +42,7 @@ import {
       id="navigate-btn"
       title="¡Hablemos! Estoy seguro que podemos crear algo increíble."
     >
-      <Title t_name="contact-title"> ¡Trabajemos juntos! </Title>
+      <Title t_name="contact-title"> ¡Contáctame! </Title>
 
       <IconHeartHandshake id="image" />
     </a>
@@ -63,24 +63,22 @@ import {
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: linear-gradient(to top, #007e74, #169086);
   }
 
   #navigate-btn {
     position: relative;
     max-width: 100%;
     padding: 6px;
-    background: linear-gradient(to left bottom, #007e74, #169086);
+    background: linear-gradient(to left bottom, #ff7800, #ffa600);
     box-shadow: 0 0 10px transparent;
     overflow: hidden;
     transition: box-shadow 0.4s ease-in;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 10px #17e7eb;
 
     &:hover {
-      box-shadow: inset 0 0 20px #11d4d8;
+      box-shadow: inset 0 0 20px #ffa600;
     }
 
     & > h2 {

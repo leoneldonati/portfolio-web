@@ -21,32 +21,18 @@ const currentDate = format(new Date(), "full", "es");
   description="Si quieres contactarme puedes hacerlo de la manera que prefieras. Por aquí te dejo todas mis redes sociales y métodos de contacto."
 >
   <section>
-    <GoHomeBtn />
+    <header class="flex flex-row justify-between items-center">
+      <GoHomeBtn class="hidden sm:block" />
 
-    <Title style=" margin-top: 10px;" t_name="contact-title">
-      Contáctame, creemos algo increíble.
-    </Title>
+      <Title class="flex-1" t_name="contact-title">
+        Contáctame, creemos algo increíble.
+      </Title>
+    </header>
 
-    <div class="flex flex-row justify-center items-start">
+    <div class="flex flex-col justify-center items-center">
       <SendEmailForm client:visible />
 
-      <ul
-        class="flex flex-1 flex-col gap-6 h-full md:h-[60%] justify-center max-w-[400px] mx-auto"
-      >
-        <li>
-          <RsBtn
-            href={RRSS.X}
-            name="X"
-            colors={{
-              bg: "rgba(33, 33, 33, .6)",
-              border: "rgb(33,33,33)",
-              text: "rgba(240,240,240,.8)",
-            }}
-          >
-            <IconBrandX slot="icon" />
-            <strong slot="text"> Visita mi X </strong>
-          </RsBtn>
-        </li>
+      <ul class="flex flex-1 flex-row gap-6 h-full justify-center mt-6">
         <li>
           <RsBtn
             href={RRSS.LinkedIn}
@@ -58,7 +44,6 @@ const currentDate = format(new Date(), "full", "es");
             }}
           >
             <IconBrandLinkedin slot="icon" />
-            <strong slot="text"> Visita mi LinkedIn </strong>
           </RsBtn>
         </li>
         <li>
@@ -72,8 +57,6 @@ const currentDate = format(new Date(), "full", "es");
             }}
           >
             <IconBrandGithub slot="icon" />
-
-            <strong slot="text"> Visita mi GitHub </strong>
           </RsBtn>
         </li>
         <li>
@@ -87,7 +70,6 @@ const currentDate = format(new Date(), "full", "es");
             }}
           >
             <IconBrandWhatsapp slot="icon" />
-            <strong slot="text"> Envíame un WhatsApp </strong>
           </RsBtn>
         </li>
       </ul>
@@ -101,6 +83,8 @@ const currentDate = format(new Date(), "full", "es");
       >
       <span class="text-sky-200 italic">{currentDate}</span>
     </footer>
+
+    <GoHomeBtn class="sm:hidden fixed bottom-2 right-2" />
   </section>
 </Layout>
 

@@ -16,10 +16,13 @@ import rosarioTravelsWebImg from "../assets/proyects/rosario-travels-web.png";
     class="min-h-screen relative w-full p-2"
     transition:name="proyect-section"
   >
-    <GoHomeBtn />
+    <header class="flex flex-row justify-between items-center">
+      <GoHomeBtn class="hidden sm:block" />
 
-    <Title t_name="proyect-title" class="text-center my-6">Mis proyectos.</Title
-    >
+      <Title t_name="proyect-title" class="flex-1 text-center"
+        >Mis proyectos.</Title
+      >
+    </header>
 
     <div class="flex flex-col gap-2" transition:name="project-img">
       <ProyectCard
@@ -49,5 +52,7 @@ import rosarioTravelsWebImg from "../assets/proyects/rosario-travels-web.png";
         tags={["HTML", "ViewTransitions", "Tailwind"]}
       />
     </div>
+
+    <GoHomeBtn class="sm:hidden fixed bottom-2 right-2" />
   </section>
 </Layout>
